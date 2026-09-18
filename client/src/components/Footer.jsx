@@ -30,7 +30,7 @@ export default function Footer() {
           </div>
           <div>
             <h4>Bisnis</h4>
-            <Link to="/affiliate">Program Affiliate</Link>
+            <a href="https://naraprivate-affiliate-6868.ai.studio/" target="_blank" rel="noopener noreferrer">Program Affiliate</a>
             <Link to="/admin">Admin Login</Link>
           </div>
           <div>
