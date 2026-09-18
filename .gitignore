@@ -1,0 +1,12 @@
+node_modules/
+dist/
+dist-standalone/
+server/data/
+server/uploads/
+NARAPRIVAT-standalone.html
+NARAPRIVAT-handoff.zip
+tools/cloudflared.exe
+tanya.py
+*.log
+.env
+.DS_Store

@@ -1,0 +1,19 @@
+{
+  "name": "tutorlink",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TutorLink - Marketplace les & pelatihan online (Superprof-style)",
+  "scripts": {
+    "setup": "npm install && npm --prefix server install && npm --prefix client install",
+    "seed": "node server/seed.js",
+    "dev:server": "npm --prefix server run dev",
+    "dev:client": "npm --prefix client run dev",
+    "dev": "concurrently -n server,client -c blue,magenta \"npm run dev:server\" \"npm run dev:client\"",
+    "start": "npm --prefix server start",
+    "build": "npm --prefix client run build",
+    "preview": "npm --prefix client run preview"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}

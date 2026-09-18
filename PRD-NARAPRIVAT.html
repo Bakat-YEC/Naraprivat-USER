@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>PRD NARAPRIVAT — Marketplace Tutor Privat</title>
+<style>
+  :root {
+    --ink: #0f172a;
+    --muted: #64748b;
+    --brand: #7c3aed;
+    --brand-2: #4f46e5;
+    --gold: #d4a017;
+    --green: #059669;
+    --red: #dc2626;
+    --border: #e2e8f0;
+    --bg: #ffffff;
+    --bg-soft: #f8fafc;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    margin: 0;
+    line-height: 1.65;
+    font-size: 13.5px;
+  }
+  .page { max-width: 860px; margin: 0 auto; padding: 40px 48px; }
+  /* COVER */
+  .cover { display: flex; flex-direction: column; justify-content: center; min-height: 92vh; border-bottom: 6px solid var(--brand); }
+  .cover .kicker { color: var(--brand); font-weight: 800; letter-spacing: 3px; text-transform: uppercase; font-size: 12px; }
+  .cover h1 { font-size: 44px; margin: 8px 0 4px; line-height: 1.1; }
+  .cover h2 { font-size: 18px; color: var(--muted); font-weight: 600; margin-top: 4px; }
+  .cover .meta { margin-top: 36px; color: var(--muted); font-size: 13px; }
+  .cover .meta div { margin: 3px 0; }
+  .cover .badges { margin-top: 24px; }
+  .cover .pill { display: inline-block; border: 1px solid var(--border); border-radius: 999px; padding: 4px 14px; margin: 0 8px 8px 0; font-size: 12px; color: var(--muted); }
+  .pill b { color: var(--ink); }
+  /* TOC */
+  .toc { background: var(--bg-soft); border: 1px solid var(--border); border-radius: 12px; padding: 20px 28px; }
+  .toc ol { columns: 2; column-gap: 40px; margin: 0; padding-left: 20px; }
+  .toc li { margin: 4px 0; }
+  a { color: var(--brand); text-decoration: none; }
+  h2.sec { font-size: 22px; margin: 42px 0 4px; padding-bottom: 8px; border-bottom: 3px solid var(--brand); }
+  h2.sec .num { color: var(--brand); }
+  h3 { font-size: 16px; margin: 28px 0 8px; color: #1e293b; }
+  h4 { font-size: 14px; margin: 18px 0 6px; }
+  p { margin: 8px 0; }
+  ul, ol { margin: 8px 0; padding-left: 22px; }
+  li { margin: 3px 0; }
+  .muted { color: var(--muted); }
+  .small { font-size: 12px; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 12.5px; }
+  th, td { border: 1px solid var(--border); padding: 7px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--bg-soft); font-weight: 700; }
+  tr:nth-child(even) td { background: #fbfcfe; }
+  .note { background: #f5f3ff; border-left: 4px solid var(--brand); padding: 10px 14px; border-radius: 0 8px 8px 0; margin: 12px 0; }
+  .warn { background: #fff7ed; border-left: 4px solid #f59e0b; padding: 10px 14px; border-radius: 0 8px 8px 0; margin: 12px 0; }
+  .ok { background: #ecfdf5; border-left: 4px solid var(--green); padding: 10px 14px; border-radius: 0 8px 8px 0; margin: 12px 0; }
+  .tag { display: inline-block; border-radius: 999px; padding: 2px 10px; font-size: 11px; font-weight: 700; margin-right: 6px; }
+  .tag-done { background: #ecfdf5; color: var(--green); border: 1px solid #a7f3d0; }
+  .tag-active { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+  .tag-next { background: #f5f5f5; color: var(--muted); border: 1px solid var(--border); }
+  .tag-req { background: #fefce8; color: #a16207; border: 1px solid #fde68a; }
+  code { background: #f1f5f9; border-radius: 4px; padding: 1px 6px; font-size: 12px; font-family: Consolas, monospace; }
+  .card { border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; margin: 10px 0; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .kpi { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 12px 0; }
+  .kpi > div { border: 1px solid var(--border); border-radius: 10px; padding: 12px; text-align: center; background: var(--bg-soft); }
+  .kpi b { display: block; font-size: 20px; color: var(--brand); }
+  .kpi span { font-size: 11.5px; color: var(--muted); }
+  .page-break { page-break-before: always; }
+  .footer { margin-top: 40px; padding-top: 14px; border-top: 1px solid var(--border); color: var(--muted); font-size: 12px; text-align: center; }
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<div class="page">
+  <div class="cover">
+    <div class="kicker">Product Requirements Document</div>
+    <h1>NARAPRIVAT</h1>
+    <h2>Marketplace Tutor Privat — Siswa &amp; Tutor</h2>
+    <div class="badges">
+      <span class="pill">Status <b>Konsep / Rencana Pembangunan</b></span>
+      <span class="pill">Target Rilis <b>17 Agustus 2026</b></span>
+      <span class="pill">Platform <b>Web (React + Vite)</b></span>
+    </div>
+    <div class="meta">
+      <div><b>Versi Dokumen:</b> 1.0</div>
+      <div><b>Tanggal:</b> 4 Agustus 2026</div>
+      <div><b>Penulis:</b> Tim Produk &amp; Teknik NARAPRIVAT</div>
+      <div><b>Cakupan:</b> Spesifikasi kebutuhan MVP — perjalanan siswa, tutor, affiliate, dan admin — sebelum pengembangan dimulai</div>
+    </div>
+  </div>
+</div>
+
+<div class="page page-break">
+  <h2 class="sec"><span class="num">0.</span> Daftar Isi</h2>
+  <div class="toc">
+    <ol>
+      <li><a href="#s1">Ringkasan Produk</a></li>
+      <li><a href="#s2">Tujuan, Masalah &amp; Metrik Sukses</a></li>
+      <li><a href="#s3">Persona &amp; Segmen Pengguna</a></li>
+      <li><a href="#s4">Alur Utama (User Journey)</a></li>
+      <li><a href="#s5">Fitur &amp; Requirement Fungsional</a></li>
+      <li><a href="#s6">Aturan Bisnis (Business Rules)</a></li>
+      <li><a href="#s7">Struktur Harga (Pricing)</a></li>
+      <li><a href="#s8">Teknis &amp; Arsitektur</a></li>
+      <li><a href="#s9">Data, Konten &amp; Akun Demo</a></li>
+      <li><a href="#s10">Requirement Non-Fungsional</a></li>
+      <li><a href="#s11">Rencana Pengujian &amp; QA</a></li>
+      <li><a href="#s12">Roadmap Pengembangan</a></li>
+      <li><a href="#s13">Risiko &amp; Mitigasi</a></li>
+    </ol>
+  </div>
+
+  <div class="kpi">
+    <div><b>2</b><span>Produk Berbayar (Pass &amp; Premium)</span></div>
+    <div><b>4</b><span>Level Lokasi (Prov → Desa)</span></div>
+    <div><b>5</b><span>Peran Admin</span></div>
+    <div><b>3</b><span>Segmen Pengguna Utama</span></div>
+  </div>
+  <div class="kpi">
+    <div><b>50+</b><span>Target Data Lokasi Master</span></div>
+    <div><b>30</b><span>Target Subjek Master</span></div>
+    <div><b>100+</b><span>Target Tutor Awal (seed)</span></div>
+    <div><b>500</b><span>Target Koneksi 3 Bulan Pasca Rilis</span></div>
+  </div>
+</div>
+
+<!-- ============ 1. RINGKASAN ============ -->
+<div class="page page-break">
+  <h2 class="sec" id="s1"><span class="num">1.</span> Ringkasan Produk</h2>
+  <p><b>NARAPRIVAT</b> adalah marketplace yang <b>akan dibangun</b> untuk membantu siswa menemukan dan menghubungi tutor privat. Siswa akan dapat mencari tutor berdasarkan subjek, lokasi, harga, dan rating; menghubungi tutor via <b>email (gratis)</b> atau <b>WhatsApp (dibuka dengan Student Pass)</b>. Tutor akan dapat mendaftar cepat, mengelola profil, dan meningkatkan visibilitas melalui <b>paket Premium</b>.</p>
+  <p>Produk direncanakan dibangun sebagai <b>MVP satu halaman (SPA)</b> dengan <b>React + Vite</b> di frontend, <b>Express + JSON database</b> di backend, dan <b>mock payment gateway</b> agar seluruh alur monetisasi dapat diuji sejak awal sebelum integrasi gateway sungguhan (Midtrans/Xendit) pada fase lanjutan.</p>
+
+  <h3>1.1 Nilai Utama (Value Proposition)</h3>
+  <table>
+    <tr><th>Untuk</th><th>Nilai yang Diberikan</th></tr>
+    <tr><td><b>Siswa / Orang tua</b></td><td>Menemukan tutor sesuai kebutuhan (subjek, lokasi, budget, rating) tanpa biaya koneksi. Email gratis; sekali bayar Student Pass bisa chat WhatsApp semua tutor.</td></tr>
+    <tr><td><b>Tutor</b></td><td>Pendaftaran cepat &amp; profil langsung aktif, punya halaman publik + SEO permalink, mendapat lead siswa. Premium meningkatkan urutan pencarian &amp; membuka fitur lanjutan.</td></tr>
+    <tr><td><b>Affiliate / Partner</b></td><td>Kode kupon ber-identitas (mis. AHMAD10, KOMUN15) dengan komisi % per transaksi sukses.</td></tr>
+    <tr><td><b>Admin / Ops</b></td><td>Dashboard 5 peran (system, operasional, CS, keuangan, analytics) untuk moderasi, verifikasi, laporan, dan konfigurasi harga.</td></tr>
+  </table>
+
+  <h3>1.2 Positioning</h3>
+  <p class="muted">"Tempat paling mudah menemukan tutor privat terdekat &amp; terpercaya — dari email gratis sampai chat WhatsApp dalam sekali bayar."</p>
+
+  <h3>1.3 Cakupan MVP (In-Scope / Out-of-Scope)</h3>
+  <table>
+    <tr><th>In-Scope (Fase 1)</th><th>Out-of-Scope (Fase lanjutan)</th></tr>
+    <tr><td>Landing page, daftar/login siswa &amp; tutor</td><td>Payment gateway sungguhan (Fase 1 pakai mock)</td></tr>
+    <tr><td>Pencarian, filter, sort &amp; pagination tutor</td><td>Aplikasi mobile native</td></tr>
+    <tr><td>Profil tutor publik, SEO permalink, ulasan</td><td>Chat realtime &amp; video call</td></tr>
+    <tr><td>Student Pass + kupon + mock gateway + resume 24 jam</td><td>Notifikasi email/WA sungguhan</td></tr>
+    <tr><td>Premium tutor: boost pencarian, ubah nama/WA, multi subjek</td><td>Sistem kehadiran/absensi les</td></tr>
+    <tr><td>Form lokasi mengajar: autocomplete 4 level + ketik manual</td><td>Pembayaran tunai / in-app wallet</td></tr>
+    <tr><td>Admin 5 peran, affiliate, booking, review, notifikasi</td><td>Multi-bahasa &amp; multi-mata uang</td></tr>
+  </table>
+</div>
+
+<!-- ============ 2. TUJUAN & METRIK ============ -->
+<div class="page">
+  <h2 class="sec" id="s2"><span class="num">2.</span> Tujuan, Masalah &amp; Metrik Sukses</h2>
+
+  <h3>2.1 Masalah yang Ingin Diselesaikan</h3>
+  <ol>
+    <li>Siswa/orang tua kesulitan menemukan tutor privat yang cocok berdasarkan lokasi, subjek, dan anggaran.</li>
+    <li>Nomor WhatsApp tutor sering dipertanyakan keasliannya → NARAPRIVAT menyembunyikan nomor (masked) dan membuka akses setelah pembayaran (model monetisasi utama).</li>
+    <li>Calon tutor tidak memiliki kanal yang mudah untuk memasarkan jasa les → pendaftaran ringkas, profil langsung aktif.</li>
+    <li>Tidak ada mekanisme komisi partner → kupon affiliate ber-identitas dengan % komisi.</li>
+  </ol>
+
+  <h3>2.2 Tujuan Produk</h3>
+  <ul>
+    <li>Meluncurkan MVP berfungsi penuh pada <b>17 Agustus 2026</b>.</li>
+    <li>Memvalidasi alur monetisasi (Student Pass &amp; Premium) end-to-end tanpa risiko integrasi pembayaran sejak awal.</li>
+    <li>Membangun basis data tutor &amp; lokasi yang layak untuk pertumbuhan (subjek custom, lokasi 4 level).</li>
+    <li>Menjaga kepercayaan: verifikasi, moderasi, laporan nomor tidak aktif, dan notifikasi overload tutor.</li>
+  </ul>
+
+  <h3>2.3 Metrik Sukses (North Star &amp; Supporting)</h3>
+  <table>
+    <tr><th>Metrik</th><th>Definisi</th><th>Target MVP (3 bulan pasca rilis)</th></tr>
+    <tr><td><b>North Star</b></td><td>Jumlah koneksi sukses siswa–tutor (email terkirim + chat WA aktif)</td><td>≥ 500 koneksi</td></tr>
+    <tr><td>Conversion Student Pass</td><td>% siswa yang membuka WA setelah lihat profil</td><td>≥ 8%</td></tr>
+    <tr><td>Conversion Tutor → Premium</td><td>% tutor aktif berlangganan Premium</td><td>≥ 15%</td></tr>
+    <tr><td>Aktivasi Tutor</td><td>Tutor mendaftar → melengkapi profil (headline, bio, harga)</td><td>≥ 70%</td></tr>
+    <tr><td>Retensi Siswa</td><td>Siswa kembali membuka profil tutor dalam 30 hari</td><td>≥ 25%</td></tr>
+    <tr><td>Kualitas Data</td><td>% tutor dengan lokasi ter-resolve ke hierarki (locationId terisi)</td><td>≥ 90%</td></tr>
+  </table>
+</div>
+
+<!-- ============ 3. PERSONA ============ -->
+<div class="page page-break">
+  <h2 class="sec" id="s3"><span class="num">3.</span> Persona &amp; Segmen Pengguna</h2>
+  <div class="grid2">
+    <div class="card">
+      <h4 style="margin-top:0">👩‍🎓 Siswa — "Andika"</h4>
+      <p class="small muted">Siswa SMA (atau orang tua) yang butuh les Matematika/UTBK. Punya budget terbatas, ingin tutor terdekat &amp; terpercaya. Tidak nyaman membagikan nomor, tapi mau chat WA kalau tutornya jelas.</p>
+      <ul class="small">
+        <li>Cari dengan kata kunci, subjek, dan lokasi (provinsi → kab/kota → kecamatan).</li>
+        <li>Hubungi via email tanpa biaya.</li>
+        <li>Beli Student Pass sekali (dengan kupon bila ada) untuk buka WA semua tutor.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 style="margin-top:0">👨‍🏫 Tutor — "Dian"</h4>
+      <p class="small muted">Guru/les privat, pengalaman 10 tahun, ngajar Matematika &amp; Bahasa Inggris di Jakarta. Mau mudah ditemukan siswa dan menaikkan jam mengajar.</p>
+      <ul class="small">
+        <li>Daftar cepat: data diri, WA, 2+ riwayat pendidikan, 1 subjek, lokasi (pilih atau ketik manual).</li>
+        <li>Kelola profil &amp; status (Available/Full).</li>
+        <li>Premium: boost urutan, ubah nama &amp; nomor WA, buka banyak subjek.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <h4 style="margin-top:0">🤝 Affiliate / Partner — "Toko Buku Ahmad"</h4>
+      <p class="small muted">Punya komunitas/siswa (toko buku, bimbel, komunitas belajar). Mendorong siswa memakai kode kupon miliknya.</p>
+      <ul class="small">
+        <li>Kode unik (mis. AHMAD10) → diskon Rp10.000 untuk siswa.</li>
+        <li>Komisi 10–15% dari nilai transaksi Student Pass sukses.</li>
+        <li>Melacak transaksi terkait kodenya (validasi &amp; lookup).</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 style="margin-top:0">🛠️ Admin Ops — 5 Peran</h4>
+      <p class="small muted">Tim internal yang menjaga kualitas pasar: moderasi, verifikasi, keuangan, dan analitik.</p>
+      <ul class="small">
+        <li>system, operasional, CS, keuangan, analytics — tiap peran punya menu berbeda.</li>
+        <li>Atur harga pass/premium, ekspor CSV, kelola status tutor, notifikasi, affiliate.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ok note" style="margin-top:20px">
+    <b>Aturan akses kontak (penting):</b> Email tutor <b>selalu gratis</b> tanpa pass. Nomor WhatsApp <b>disembunyikan (masked)</b> dan hanya terbuka untuk siswa yang punya Student Pass aktif. Akun tutor <b>tidak bisa membeli</b> Student Pass (hanya Premium).
+  </div>
+</div>
+
+<!-- ============ 4. USER JOURNEY ============ -->
+<div class="page">
+  <h2 class="sec" id="s4"><span class="num">4.</span> Alur Utama (User Journey)</h2>
+
+  <h3>4.1 Alur Siswa</h3>
+  <ol>
+    <li>Membuka landing page → lihat tutor unggulan / fitur.</li>
+    <li>Masuk halaman <b>Cari Tutor</b>: ketik nama/kata kunci, pilih subjek, pilih lokasi (provinsi/kab/kecamatan), atur rentang harga &amp; rating → <b>Terapkan Filter</b>.</li>
+    <li>Buka profil tutor → lihat bio, subjek, riwayat pendidikan, sertifikat, ulasan, jadwal, harga.</li>
+    <li>Hubungi: klik <b>Email Tutor</b> (gratis) langsung membuka mailto.</li>
+    <li>Ingin chat WA → klik <b>Buka WhatsApp • Rp59.000</b> → wajib login (siswa).</li>
+    <li>Masuk halaman checkout → masukkan kode kupon (mis. AHMAD10) → total jadi <b>Rp49.000</b> → bayar → <b>Mock Gateway</b> → transaksi sukses → <b>Pass aktif</b> (badge ⭐ di navbar + kartu pass di dashboard).</li>
+    <li>Kembali ke profil tutor → tombol <b>Chat WhatsApp</b> aktif, pesan terisi otomatis, nomor terbuka.</li>
+    <li>Bisa lapor "nomor tidak aktif" bila perlu.</li>
+  </ol>
+
+  <h3>4.2 Alur Tutor</h3>
+  <ol>
+    <li>Daftar tutor (1 halaman): nama, email, password, gender, WA, 2+ riwayat pendidikan, sertifikat PDF opsional, foto, <b>1 bidang ajar</b> (atau custom "Other"), <b>lokasi mengajar</b>.</li>
+    <li>Lokasi: ketik nama daerah → pilih saran → <b>kolom Provinsi/Kabupaten-Kota/Kecamatan/Desa otomatis terisi</b>; atau klik <b>"Ketik manual"</b> → isi 4 kolom teks bebas (cth. Bali / Denpasar / Kuta Selatan).</li>
+    <li>Profil langsung aktif → diarahkan ke <b>Dashboard → Status</b>.</li>
+    <li>Melengkapi profil: headline, bio, harga/jam, mode online/tatap muka, jadwal, status Available/Full.</li>
+    <li>Mengubah <b>nama</b> &amp; <b>nomor WA</b> membutuhkan Premium (non-premium: field terkunci + banner benefit).</li>
+    <li>Menambah subjek ke-2 dst. membutuhkan Premium (gratis: 1 subjek).</li>
+    <li>Beli <b>Premium Rp29.000/30 hari</b> → boost urutan pencarian + fitur lanjutan aktif.</li>
+  </ol>
+
+  <h3>4.3 Alur Admin &amp; Affiliate</h3>
+  <ul>
+    <li><b>Admin:</b> login akun @naraprivat.id → dashboard sesuai peran → kelola tutor, verifikasi, transaksi, konfigurasi harga, affiliate, ekspor.</li>
+    <li><b>Affiliate:</b> kode kupon dibagikan ke siswanya; sistem mencatat affiliateId di transaksi &amp; komisi sesuai %. Admin keuangan memantau via menu affiliate.</li>
+  </ul>
+
+  <div class="note"><b>Resume pembayaran:</b> transaksi Student Pass dibuat dalam status <b>pending</b> + sesi 24 jam. Siswa bisa melanjutkan pembayaran dalam 24 jam via URL sesi; lebih dari itu sesi kedaluwarsa (410).</div>
+</div>
+
+<!-- ============ 5. FITUR & REQUIREMENT ============ -->
+<div class="page page-break">
+  <h2 class="sec" id="s5"><span class="num">5.</span> Fitur &amp; Requirement Fungsional</h2>
+  <p class="muted">Kode prioritas: <span class="tag tag-req">FR</span> (Functional Requirement).</p>
+
+  <h3>5.1 Autentikasi &amp; Akun</h3>
+  <table>
+    <tr><th style="width:40px">ID</th><th>Requirement</th></tr>
+    <tr><td>FR-1.1</td><td>Registrasi &amp; login siswa, tutor, admin dengan email + password (bcrypt, token JWT, session/remember).</td></tr>
+    <tr><td>FR-1.2</td><td>Akun siswa mengembalikan status <code>studentPass</code> (hasPass, passCount, passSince) di <code>/me</code>, login, dan register untuk badge pass.</td></tr>
+    <tr><td>FR-1.3</td><td>Admin hanya bisa dibuat/akses via email domain <code>@naraprivat.id</code> dengan peran tertentu.</td></tr>
+    <tr><td>FR-1.4</td><td>Validasi WhatsApp tutor: format <code>08xxxxxxxxxx</code> atau <code>62…</code> minimal 10 digit.</td></tr>
+    <tr><td>FR-1.5</td><td>Pendaftaran tutor wajib mengisi minimal 2 riwayat pendidikan.</td></tr>
+  </table>
+
+  <h3>5.2 Pencarian &amp; Discovery Tutor</h3>
+  <table>
+    <tr><th style="width:40px">ID</th><th>Requirement</th></tr>
+    <tr><td>FR-2.1</td><td>Pencarian teks <code>q</code> mencakup nama, headline, bio, subjek, dan kota tutor (case-insensitive).</td></tr>
+    <tr><td>FR-2.2</td><td>Filter subjek, lokasi hierarki (provinsi/kabupaten/kecamatan/desa), rentang harga (min/max), rating minimal, hanya online, status available.</td></tr>
+    <tr><td>FR-2.3</td><td>Sort: recommended (premium boost), rating, harga naik/turun, terbaru, populer.</td></tr>
+    <tr><td>FR-2.4</td><td>Pagination (default 9/halaman, maks 30) dengan total &amp; totalPages.</td></tr>
+    <tr><td>FR-2.5</td><td>Filter lokasi menghitung semua <b>keturunan</b> target (memilih kecamatan mencakup desa; memilih kabupaten mencakup kecamatan) dan cocok dengan teks kota tutor manual.</td></tr>
+    <tr><td>FR-2.6</td><td>Tombol <b>Terapkan Filter</b> &amp; <b>Hapus Filter</b> selalu tampil; setelah terapkan scroll ke hasil.</td></tr>
+    <tr><td>FR-2.7</td><td>Kartu tutor: foto/avatar, nama, headline, subjek, lokasi, harga, rating &amp; jumlah ulasan, status online, lencana Premium ⭐ &amp; verified ✓, jumlah booking selesai.</td></tr>
+    <tr><td>FR-2.8</td><td>Log pencarian (<code>/api/search/logs</code>) untuk analitik admin.</td></tr>
+  </table>
+
+  <h3>5.3 Profil Tutor Publik &amp; Kontak</h3>
+  <table>
+    <tr><th style="width:40px">ID</th><th>Requirement</th></tr>
+    <tr><td>FR-3.1</td><td>Halaman profil detail: hero (foto, nama, lencana, headline), lokasi, mode, pengalaman, member since, status ketersediaan.</td></tr>
+    <tr><td>FR-3.2</td><td>Bagian: Tentang, Bidang Ajar (link filter), Riwayat Pendidikan, Sertifikat, Jadwal, Ulasan (rating + komentar siswa).</td></tr>
+    <tr><td>FR-3.3</td><td>Tampilkan lokasi: <code>locationPath.join(' > ')</code>; fallback ke <code>locationName</code> atau <code>city</code> bila path kosong (tutor lokasi manual).</td></tr>
+    <tr><td>FR-3.4</td><td>Kontak email: <b>gratis tanpa pass</b>, mailto dengan subjek/isi otomatis.</td></tr>
+    <tr><td>FR-3.5</td><td>WhatsApp: nomor <b>masked</b> (4 digit pertama + •••• + 2 digit akhir). Terbuka hanya untuk siswa dengan pass aktif (<code>canChat</code>).</td></tr>
+    <tr><td>FR-3.6</td><td>Tutor status <b>Full</b>: tombol chat/checkout terkunci, pesan "cari tutor lain".</td></tr>
+    <tr><td>FR-3.7</td><td>Lapor nomor tidak aktif → notifikasi ke admin operasional (<code>report_invalid_number</code>).</td></tr>
+    <tr><td>FR-3.8</td><td>Endpoint SEO permalink <code>/tutor/:slug</code> (slug unik dari subjek+kota+nama).</td></tr>
+    <tr><td>FR-3.9</td><td>Akun tutor tidak bisa membeli Student Pass (hanya premium).</td></tr>
+  </table>
+
+  <h3>5.4 Student Pass &amp; Pembayaran (Mock Gateway)</h3>
+  <table>
+    <tr><th style="width:40px">ID</th><th>Requirement</th></tr>
+    <tr><td>FR-4.1</td><td>Harga dasar pass diambil dari <code>config.studentPassPrice</code> (default Rp59.000).</td></tr>
+    <tr><td>FR-4.2</td><td>Kupon: valid → diskon Rp10.000 → <code>max(0, harga − 10.000)</code> (Rp49.000); kupon invalid → transaksi tetap jalan + pesan peringatan.</td></tr>
+    <tr><td>FR-4.3</td><td>Transaksi dibuat status <b>pending</b> + <b>sesi 24 jam</b> (<code>token</code>, resume via <code>/payments/session/:token</code>).</td></tr>
+    <tr><td>FR-4.4</td><td>Mock gateway: <code>POST /payments/mock/:id/pay</code> (sukses) &amp; <code>/fail</code>; polling via <code>GET /payments/transaction/:id</code>.</td></tr>
+    <tr><td>FR-4.5</td><td>Sukses: <code>studentPass</code> siswa ter-update (hasPass true), unlock tutor dihitung (+ notifikasi overload > 10/hari).</td></tr>
+    <tr><td>FR-4.6</td><td>UI checkout: breakdown (harga, diskon kupon, total), input kode kupon, tombol "Simulasi Bayar Sukses/Gagal".</td></tr>
+    <tr><td>FR-4.7</td><td>Siswa yang sudah punya pass tidak lagi diminta membayar (direct chat).</td></tr>
+  </table>
+</div>
+
+<div class="page">
+  <h3>5.5 Premium Tutor</h3>
+  <table>
+    <tr><th style="width:40px">ID</th><th>Requirement</th></tr>
+    <tr><td>FR-5.1</td><td>Paket Premium Rp29.000 / 30 hari (<code>config.tutorPremiumPrice</code>).</td></tr>
+    <tr><td>FR-5.2</td><td>Status premium aktif = <code>isPremium &amp;&amp; premiumExpiresAt > now</code> (dipaksa di sisi server, bukan hanya UI).</td></tr>
+    <tr><td>FR-5.3</td><td>Benefit 1 — <b>Boost urutan pencarian</b>: skor +1000 pada sort recommended.</td></tr>
+    <tr><td>FR-5.4</td><td>Benefit 2 — <b>Ubah nama</b> (PATCH <code>/tutors/me</code> ditolak non-premium saat nama berubah).</td></tr>
+    <tr><td>FR-5.5</td><td>Benefit 3 — <b>Ubah nomor WhatsApp</b> (ditolak non-premium saat berubah).</td></tr>
+    <tr><td>FR-5.6</td><td>Benefit 4 — <b>Multi subjek</b>: registrasi &amp; PATCH non-premium maks 1 subjek; premium bebas (server menolak &gt;1).</td></tr>
+    <tr><td>FR-5.7</td><td>Form profil menampilkan banner manfaat premium &amp; tombol upgrade; field terkunci (disabled) untuk non-premium.</td></tr>
+  </table>
+
+  <h3>5.6 Registrasi Tutor — Bidang Ajar &amp; Lokasi</h3>
+  <table>
+    <tr><th style="width:40px">ID</th><th>Requirement</th></tr>
+    <tr><td>FR-6.1</td><td>Pilih <b>1 subjek</b> dari daftar (atau custom "Other" via <code>SubjectAutocomplete allowCreate</code>).</td></tr>
+    <tr><td>FR-6.2</td><td>Subjek custom otomatis <b>didaftarkan</b> ke <code>db.subjects</code> (resolveSubjects) sehingga muncul di filter dan subjek tutor lain.</td></tr>
+    <tr><td>FR-6.3</td><td>Lokasi via <b>autocomplete pencarian jalur</b> ("Jawa Timur › Kab. Tulungagung › Ngantru"): pilih saran → <b>4 kolom (Provinsi/Kabupaten-Kota/Kecamatan/Desa) otomatis terisi</b> + label termuat.</td></tr>
+    <tr><td>FR-6.4</td><td>Kolom cascade tetap bisa dipilih manual satu per satu (berjenjang).</td></tr>
+    <tr><td>FR-6.5</td><td>Mode <b>"Ketik manual"</b>: 4 kolom berubah menjadi input teks bebas (Provinsi, Kabupaten/Kota, Kecamatan, Desa opsional) dengan pratinjau "Akan tersimpan sebagai: …"; mengisi otomatis dari pilihan sebelumnya bila ada.</td></tr>
+    <tr><td>FR-6.6</td><td>Server: <code>customLocation</code> diterima → <code>resolveCustomLocation</code> mencocokkan nama ke lokasi dikenal (<code>aliasLocation</code> menghilangkan "kabupaten/kota"); bila tidak cocok, <code>locationId = null</code> &amp; disimpan sebagai <code>city</code> teks.</td></tr>
+    <tr><td>FR-6.7</td><td>Tanpa custom: wajib memilih hingga level <b>kecamatan</b> (server menolak bila kurang).</td></tr>
+    <tr><td>FR-6.8</td><td>Tutor dengan <code>city</code> manual tetap ditemukan oleh filter lokasi (pencocokan teks kota vs rantai nama target).</td></tr>
+    <tr><td>FR-6.9</td><td>Slug unik dihasilkan dari subjek pertama + kota + nama.</td></tr>
+  </table>
+
+  <h3>5.7 Dashboard Tutor</h3>
+  <table>
+    <tr><th style="width:40px">ID</th><th>Requirement</th></tr>
+    <tr><td>FR-7.1</td><td>Tab <b>Status</b>: status ketersediaan (Available/Full), statistik (rating, ulasan, booking selesai), tombol upgrade premium.</td></tr>
+    <tr><td>FR-7.2</td><td>Tab <b>Profil</b>: form headline, bio, harga, mode, bahasa, pengalaman, jadwal, subjek (pembatas 1 untuk non-premium + input custom), foto, pendidikan.</td></tr>
+    <tr><td>FR-7.3</td><td>Kolom Nama &amp; WhatsApp: <b>terkunci (disabled)</b> untuk non-premium, dengan banner benefit premium.</td></tr>
+    <tr><td>FR-7.4</td><td>Form sinkron dengan data user saat dimuat (useEffect), mencegah field kosong/blank setelah login/daftar.</td></tr>
+  </table>
+
+  <h3>5.8 Booking &amp; Ulasan</h3>
+  <table>
+    <tr><th style="width:40px">ID</th><th>Requirement</th></tr>
+    <tr><td>FR-8.1</td><td>Siswa mengajukan booking (jadwal/pertemuan); daftar booking siswa (<code>/bookings/mine</code>), update status (mis. completed/cancelled).</td></tr>
+    <tr><td>FR-8.2</td><td>Ulasan siswa per tutor: rating 1–5 + komentar; tampil di profil publik &amp; dashboard tutor.</td></tr>
+    <tr><td>FR-8.3</td><td>Rating dihitung rata-rata (1 desimal); jumlah booking selesai dihitung dari booking berstatus <b>completed</b>.</td></tr>
+  </table>
+
+  <h3>5.9 Affiliate / Kupon</h3>
+  <table>
+    <tr><th style="width:40px">ID</th><th>Requirement</th></tr>
+    <tr><td>FR-9.1</td><td>Affiliate punya kode unik &amp; % komisi (cth. Toko Buku Ahmad 10%, Komunitas Belajar 15%).</td></tr>
+    <tr><td>FR-9.2</td><td>Validasi kupon: <code>POST /affiliates/validate</code> → {valid, discount Rp10.000, info affiliate}.</td></tr>
+    <tr><td>FR-9.3</td><td>Kupon dipakai di Student Pass &amp; Premium; transaksi mencatat <code>affiliateId</code> + <code>couponCode</code>.</td></tr>
+    <tr><td>FR-9.4</td><td>Lookup &amp; data diri affiliate (<code>/affiliates/lookup</code>, <code>/affiliates/me</code>) untuk pelaporan admin keuangan.</td></tr>
+  </table>
+
+  <h3>5.10 Admin (5 Peran)</h3>
+  <table>
+    <tr><th style="width:40px">ID</th><th>Requirement</th></tr>
+    <tr><td>FR-10.1</td><td>Peran: <b>system, operasional, CS, keuangan, analytics</b>; tiap peran hanya melihat menu sesuai tugasnya.</td></tr>
+    <tr><td>FR-10.2</td><td>Kelola tutor: daftar, status (active/takedown, available/full), verifikasi (sertifikat/✓).</td></tr>
+    <tr><td>FR-10.3</td><td>Transaksi: daftar Student Pass &amp; Premium, filter status, <b>ekspor CSV</b>, ringkasan (total, pass terjual, komisi affiliate).</td></tr>
+    <tr><td>FR-10.4</td><td>Konfigurasi harga: ubah <code>studentPassPrice</code> &amp; <code>tutorPremiumPrice</code>.</td></tr>
+    <tr><td>FR-10.5</td><td>Kelola affiliate (tambah/ubah kode &amp; komisi) &amp; laporkan komisi per affiliate.</td></tr>
+    <tr><td>FR-10.6</td><td>Notifikasi operasional: laporan nomor tidak aktif, overload unlock tutor.</td></tr>
+    <tr><td>FR-10.7</td><td>Analitik: log pencarian &amp; ringkasan aktivitas.</td></tr>
+  </table>
+</div>
+
+<!-- ============ 6. BUSINESS RULES ============ -->
+<div class="page page-break">
+  <h2 class="sec" id="s6"><span class="num">6.</span> Aturan Bisnis (Business Rules)</h2>
+
+  <h3>6.1 Harga &amp; Kupon</h3>
+  <table>
+    <tr><th>Rule</th><th>Detail</th></tr>
+    <tr><td>BR-1</td><td>Harga Student Pass dasar <b>Rp59.000</b> (konfigurasi: <code>config.studentPassPrice</code>).</td></tr>
+    <tr><td>BR-2</td><td>Kupon valid memotong <b>Rp10.000</b> → total <b>Rp49.000</b> (tidak bisa negatif).</td></tr>
+    <tr><td>BR-3</td><td>Kupon invalid: transaksi tetap bisa dilanjutkan dengan harga penuh + pesan peringatan.</td></tr>
+    <tr><td>BR-4</td><td>Premium tutor <b>Rp29.000 / 30 hari</b>, berlaku sejak pembayaran sukses.</td></tr>
+    <tr><td>BR-5</td><td>Harga dari konfigurasi admin (<code>db.config</code>) menimpa konstanta default.</td></tr>
+  </table>
+
+  <h3>6.2 Akses &amp; Gating</h3>
+  <table>
+    <tr><th>Rule</th><th>Detail</th></tr>
+    <tr><td>BR-6</td><td>Email tutor: <b>gratis</b> untuk semua (tanpa login/pass).</td></tr>
+    <tr><td>BR-7</td><td>WhatsApp: <b>terbuka hanya</b> untuk siswa login dengan Student Pass aktif.</td></tr>
+    <tr><td>BR-8</td><td>Akun tutor <b>tidak dapat membeli</b> Student Pass.</td></tr>
+    <tr><td>BR-9</td><td>Tutor <b>Full</b>: tidak bisa dihubungi/di-checkout; profil tetap tampil.</td></tr>
+    <tr><td>BR-10</td><td>Ubah nama &amp; nomor WA tutor = <b>fitur Premium</b> (ditolak server non-premium).</td></tr>
+    <tr><td>BR-11</td><td>Subjek tutor non-premium maks <b>1</b>; premium bebas. Ditegakkan server di registrasi &amp; PATCH.</td></tr>
+    <tr><td>BR-12</td><td>Boost pencarian premium: skor <b>+1000</b> pada sort recommended (sebelum popularity).</td></tr>
+  </table>
+
+  <h3>6.3 Lokasi &amp; Data Kualitas</h3>
+  <table>
+    <tr><th>Rule</th><th>Detail</th></tr>
+    <tr><td>BR-13</td><td>Pilih dari daftar: wajib hingga level <b>kecamatan</b>.</td></tr>
+    <tr><td>BR-14</td><td>Ketik manual: 4 kolom bebas (Provinsi, Kabupaten/Kota, Kecamatan, Desa opsional), digabung koma.</td></tr>
+    <tr><td>BR-15</td><td>Filter lokasi = target + seluruh keturunannya, atau pencocokan teks <code>city</code> tutor manual.</td></tr>
+    <tr><td>BR-16</td><td>Teks "Kabupaten/Kota X" dinormalisasi (alias) untuk pencocokan lokasi.</td></tr>
+    <tr><td>BR-17</td><td>Subjek custom yang dibuat tutor otomatis jadi pilihan global.</td></tr>
+  </table>
+
+  <h3>6.4 Anti-Penyalahgunaan &amp; Ops</h3>
+  <table>
+    <tr><th>Rule</th><th>Detail</th></tr>
+    <tr><td>BR-18</td><td>Unlock profil tutor dicatat harian; &gt; 10 kali/hari memicu notifikasi overload ke operasional.</td></tr>
+    <tr><td>BR-19</td><td>Laporan nomor tidak aktif → notifikasi operasional dengan catatan.</td></tr>
+    <tr><td>BR-20</td><td>Sesi pembayaran kedaluwarsa 24 jam (HTTP 410).</td></tr>
+    <tr><td>BR-21</td><td>Email admin harus berakhiran <code>@naraprivat.id</code>.</td></tr>
+  </table>
+
+  <div class="ok">
+    <b>Contoh skenario penerimaan (acceptance test):</b> kupon <code>AHMAD10</code> → total <b>Rp49.000</b>, tanpa kupon → <b>Rp59.000</b>; tutor dengan lokasi manual "Ngantru, Tulungagung" harus muncul pada filter Kec. Ngantru, Kab. Tulungagung, Prov. Jawa Timur, maupun pencarian <code>tulungagung</code>.
+  </div>
+</div>
+
+<!-- ============ 7. PRICING ============ -->
+<div class="page">
+  <h2 class="sec" id="s7"><span class="num">7.</span> Struktur Harga (Pricing)</h2>
+  <table>
+    <tr><th>Produk</th><th>Harga</th><th>Dengan Kupon</th><th>Cakupan</th></tr>
+    <tr><td><b>Student Pass</b></td><td>Rp59.000</td><td>Rp49.000 (AHMAD10, KOMUN15)</td><td>Buka WhatsApp semua tutor; sekali bayar</td></tr>
+    <tr><td><b>Premium Tutor</b></td><td>Rp29.000 / 30 hari</td><td>—</td><td>Boost pencarian, ubah nama/WA, multi subjek</td></tr>
+  </table>
+  <table>
+    <tr><th>Kupon</th><th>Pemilik</th><th>Komisi Affiliate</th><th>Diskon Siswa</th></tr>
+    <tr><td><code>AHMAD10</code></td><td>Toko Buku Ahmad</td><td>10%</td><td>Rp10.000</td></tr>
+    <tr><td><code>KOMUN15</code></td><td>Komunitas Belajar</td><td>15%</td><td>Rp10.000</td></tr>
+  </table>
+  <p class="muted small">* Komisi dihitung dari transaksi sukses dengan kode terkait; dicatat di <code>db.transactions.affiliateId</code>.</p>
+</div>
+
+<!-- ============ 8. TEKNIS ============ -->
+<div class="page page-break">
+  <h2 class="sec" id="s8"><span class="num">8.</span> Teknis &amp; Arsitektur</h2>
+
+  <h3>8.1 Rencana Tech Stack</h3>
+  <table>
+    <tr><th>Lapisan</th><th>Teknologi</th></tr>
+    <tr><td>Frontend</td><td>React (SPA) + Vite + React Router; CSS custom (index.css); komponen: Navbar, LocationCascade, LocationAutocomplete, SubjectAutocomplete, StarRating, MockGateway, dsb.</td></tr>
+    <tr><td>Backend</td><td>Node.js + Express; JWT auth; bcryptjs; JSON file database (<code>server/data/db.json</code>) dengan <code>readDb/writeDb</code>.</td></tr>
+    <tr><td>API Base</td><td><code>localhost:5000</code> (proksi Vite <code>/api</code>), mode dev + build produksi.</td></tr>
+    <tr><td>Deploy dev</td><td>Vite <code>host: true</code> untuk akses LAN (IP <code>10.10.10.48</code>); firewall diizinkan untuk test device lain.</td></tr>
+  </table>
+
+  <h3>8.2 Model Data Inti (db.json)</h3>
+  <table>
+    <tr><th>Koleksi</th><th>Isi</th></tr>
+    <tr><td><code>users</code></td><td>Role: student/tutor/admin. Tutor: subjects, subjectIds, city, locationId, price, online, verified, experienceYears, availability, whatsapp (hash? plain), isPremium, premiumExpiresAt, unlockCountToday, status, slug, educationHistory, certificates, photoUrl.</td></tr>
+    <tr><td><code>locations</code></td><td>Hirarki 4 level (provinsi/kabupaten/kecamatan/desa) via parentId; 71 entri; alias-normalisasi.</td></tr>
+    <tr><td><code>subjects</code></td><td>30 subjek (termasuk custom "Agama Budha", "Excel").</td></tr>
+    <tr><td><code>transactions</code></td><td>Type student_pass / tutor_premium; amount, couponCode, affiliateId, paymentStatus (pending/success/failed), gatewayRef, returnUrl, paidAt.</td></tr>
+    <tr><td><code>sessions</code></td><td>Sesi pembayaran 24 jam (token, studentId, tutorId, transactionId, expiresAt).</td></tr>
+    <tr><td><code>bookings</code>, <code>reviews</code>, <code>affiliates</code>, <code>searchLogs</code>, <code>admins</code>, <code>notifications</code>, <code>config</code></td><td>Masing-masing untuk fungsi terkait.</td></tr>
+  </table>
+
+  <h3>8.3 API Utama</h3>
+  <table>
+    <tr><th>Endpoint</th><th>Fungsi</th></tr>
+    <tr><td><code>GET /api/tutors</code></td><td>Pencarian: q, subject, provinsi/kabupaten/kecamatan/desa, locationId, minPrice/maxPrice, minRating, online, availability, sort, page/perPage.</td></tr>
+    <tr><td><code>GET /api/tutors/:idOrSlug | /permalink/:slug</code></td><td>Detail profil publik + ulasan.</td></tr>
+    <tr><td><code>POST /api/tutors</code> · <code>GET|PATCH /api/tutors/me</code></td><td>Registrasi &amp; kelola profil tutor (gating premium).</td></tr>
+    <tr><td><code>POST /api/tutors/:id/report</code> · <code>/unlock</code></td><td>Lapor nomor; catat unlock + overload.</td></tr>
+    <tr><td><code>GET /api/payments/access</code></td><td>Cek akses &amp; harga pass untuk profil tutor.</td></tr>
+    <tr><td><code>POST /api/payments/student-pass | /premium</code></td><td>Buat transaksi pending (+ kupon/sesi).</td></tr>
+    <tr><td><code>GET /api/payments/transaction/:id | /session/:token</code></td><td>Polling status &amp; resume sesi 24 jam.</td></tr>
+    <tr><td><code>POST /api/payments/mock/:id/pay | /fail</code></td><td>Simulasi gateway.</td></tr>
+    <tr><td><code>POST /api/affiliates/validate | /lookup | /me</code></td><td>Validasi kupon &amp; data affiliate.</td></tr>
+    <tr><td><code>GET /api/search/logs</code></td><td>Log pencarian (analitik).</td></tr>
+    <tr><td><code>/api/auth/*</code>, <code>/api/me</code>, <code>/api/bookings/*</code>, <code>/api/reviews</code>, <code>/api/uploads</code>, <code>/api/admin/*</code></td><td>Autentikasi, booking, ulasan, upload, admin.</td></tr>
+  </table>
+
+  <h3>8.4 Keamanan</h3>
+  <ul>
+    <li>Password di-hash (bcrypt), JWT untuk sesi.</li>
+    <li>Validasi server di semua titik rawan (subjek &gt;1, ganti nama/WA, harga admin, format WA/email).</li>
+    <li>Nomor WhatsApp di-mask di API detail untuk non-pemilik.</li>
+    <li>Data file DB di server; <b>jangan commit akun/lokasi tes</b> yang tidak ada di seed (npm run seed menimpa db).</li>
+  </ul>
+</div>
+
+<!-- ============ 9. DATA & DEMO ============ -->
+<div class="page">
+  <h2 class="sec" id="s9"><span class="num">9.</span> Data, Konten &amp; Akun Demo (Rencana)</h2>
+
+  <h3>9.1 Data Master yang Akan Disiapkan</h3>
+  <ul>
+    <li><b>Lokasi:</b> 4 level (Provinsi → Kabupaten/Kota → Kecamatan → Desa), dimulai dari 50+ entri. Wajib mencakup Jawa Timur termasuk <b>Kab. Tulungagung</b> dengan kecamatan <b>Ngantru, Boyolangu, Kedungwaru</b> sebagai contoh data untuk pengujian lokasi.</li>
+    <li><b>Subjek:</b> minimal 30 item — Matematika, Bahasa Inggris, Programming, Fisika, Kimia, Biologi, Bahasa Indonesia, Bahasa Mandarin/Jepang/Arab/Korea, Sejarah, Geografi, Ekonomi, Akuntansi, Web Development, Data Science, Musik, Gitar, Piano, Seni Rupa, Mengaji, IPA, IPS, Sosiologi, PKN, Fotografi, Agama Islam, dan lainnya. Subjek custom yang dibuat tutor otomatis masuk ke daftar master.</li>
+    <li><b>Content:</b> landing page (fitur, cara kerja, info kupon) dan halaman S&amp;K/privasi singkat sebelum rilis.</li>
+  </ul>
+
+  <h3>9.2 Akun Demo pada Seed (password <code>password123</code>)</h3>
+  <table>
+    <tr><th>Akun</th><th>Email</th><th>Catatan</th></tr>
+    <tr><td>Siswa</td><td><code>student@tutorlink.id</code></td><td>Andika Putra</td></tr>
+    <tr><td>Tutor</td><td><code>tutor@tutorlink.id</code></td><td>Dian Kusuma — Jakarta, Matematika &amp; Bahasa Inggris</td></tr>
+    <tr><td>Admin System</td><td><code>admin.system@naraprivat.id</code></td><td>Peran: system</td></tr>
+    <tr><td>Admin Operasional</td><td><code>admin.ops@naraprivat.id</code></td><td>Peran: operasional</td></tr>
+    <tr><td>Admin CS</td><td><code>admin.cs@naraprivat.id</code></td><td>Peran: cs</td></tr>
+    <tr><td>Admin Keuangan</td><td><code>admin.keuangan@naraprivat.id</code></td><td>Peran: keuangan</td></tr>
+    <tr><td>Admin Analytics</td><td><code>admin.analytics@naraprivat.id</code></td><td>Peran: analytics</td></tr>
+  </table>
+
+  <h3>9.3 Data Uji yang Disiapkan</h3>
+  <ul>
+    <li>Minimal 1 tutor dengan <b>lokasi manual</b> (mis. city "Ngantru, Tulungagung", non-premium) untuk memvalidasi pencocokan filter lokasi terhadap teks kota.</li>
+    <li>Minimal 1 tutor premium (untuk uji boost pencarian) dan 1 siswa ber-pass (untuk uji akses WhatsApp).</li>
+  </ul>
+</div>
+
+<!-- ============ 10. NON-FUNGSIONAL ============ -->
+<div class="page page-break">
+  <h2 class="sec" id="s10"><span class="num">10.</span> Requirement Non-Fungsional</h2>
+  <table>
+    <tr><th>Kategori</th><th>Requirement</th></tr>
+    <tr><td>Performa</td><td>Load halaman &lt; 2 detik pada koneksi normal; daftar tutor paginasi 9/halaman; ukuran bundle produksi wajar (&lt; 500 kB).</td></tr>
+    <tr><td>Keamanan</td><td>Hash password; validasi server menyeluruh; masking data sensitif (WA); tidak ada secret/key di repo.</td></tr>
+    <tr><td>Kompatibilitas</td><td>Desktop &amp; mobile (responsive); server dev dapat diakses dari LAN (<code>host: true</code>) untuk pengujian multi-perangkat.</td></tr>
+    <tr><td>SEO</td><td>Permalink tutor <code>/tutor/:slug</code> unik; landing + halaman tutor dapat diindeks.</td></tr>
+    <tr><td>Data</td><td>Backup via seed; <code>npm run seed</code> mengembalikan data awal (waspadai penimpaan data tes).</td></tr>
+    <tr><td>Ketersediaan MVP</td><td>Single server dev; uptime cukup untuk demo rilis 17 Agustus 2026.</td></tr>
+    <tr><td>Aksesibilitas</td><td>Kontras warna cukup, tombol besar, teks label jelas, feedback error per form.</td></tr>
+  </table>
+</div>
+
+<!-- ============ 11. PENGUJIAN ============ -->
+<div class="page">
+  <h2 class="sec" id="s11"><span class="num">11.</span> Rencana Pengujian &amp; QA</h2>
+
+  <h3>11.1 Skenario Uji Utama (Kriteria Penerimaan)</h3>
+  <table>
+    <tr><th>No</th><th>Skenario</th><th>Hasil yang Diharapkan</th></tr>
+    <tr><td>1</td><td>Kupon AHMAD10 dipakai di Student Pass</td><td>Total menjadi Rp49.000</td></tr>
+    <tr><td>2</td><td>Student Pass tanpa kupon</td><td>Total Rp59.000</td></tr>
+    <tr><td>3</td><td>Tutor lokasi manual "Ngantru, Tulungagung" difilter Kec. Ngantru / Kab. Tulungagung / Prov. Jawa Timur / q=tulungagung</td><td>Muncul pada keempat kondisi</td></tr>
+    <tr><td>4</td><td>Tutor non-premium mengubah nama/WA</td><td>Ditolak server</td></tr>
+    <tr><td>5</td><td>Registrasi/PATCH subjek &gt;1 untuk non-premium</td><td>Ditolak server</td></tr>
+    <tr><td>6</td><td>Autocomplete lokasi → 4 kolom terisi otomatis; mode ketik manual per kolom</td><td>Kolom terisi &amp; tersimpan benar</td></tr>
+    <tr><td>7</td><td>Registrasi tutor baru</td><td>Profil langsung aktif, tidak ada halaman kosong</td></tr>
+    <tr><td>8</td><td>Kontak email tanpa pass; WhatsApp terkunci</td><td>Email terbuka; WA butuh pass aktif</td></tr>
+    <tr><td>9</td><td>Bayar sukses → badge ⭐ + kartu pass di dashboard</td><td>Tampil benar setelah refresh</td></tr>
+    <tr><td>10</td><td>Resume sesi pembayaran</td><td>Bisa lanjut dalam 24 jam; kedaluwarsa → error 410</td></tr>
+  </table>
+
+  <h3>11.2 Pendekatan QA</h3>
+  <ul>
+    <li>Uji fungsional manual untuk setiap alur kritis (siswa, tutor, admin, affiliate) sebelum tiap fase rilis.</li>
+    <li>Regression penuh setelah perubahan form penting (mis. form lokasi).</li>
+    <li>Lint &amp; build produksi sebagai gate sebelum rilis.</li>
+    <li>Verifikasi enforcement di sisi server (bukan hanya UI) untuk semua gating premium.</li>
+  </ul>
+</div>
+
+<!-- ============ 12. ROADMAP ============ -->
+<div class="page page-break">
+  <h2 class="sec" id="s12"><span class="num">12.</span> Roadmap Pengembangan</h2>
+
+  <h3>12.1 Tahapan Pembangunan</h3>
+  <table>
+    <tr><th>Fase</th><th>Lingkup Kerja</th><th>Deliverable</th></tr>
+    <tr><td><b>P0 — Fondasi</b></td><td>Setup project React+Vite+Express, model data (JSON db), autentikasi JWT, seed data master (lokasi, subjek, akun demo).</td><td>Kerangka app + akun demo jalan</td></tr>
+    <tr><td><b>P1 — Discovery &amp; Kontak</b></td><td>Landing, daftar/login, pencarian+filter+sort, profil tutor publik, email &amp; WhatsApp gating, log pencarian.</td><td>Alur siswa selesai</td></tr>
+    <tr><td><b>P2 — Monetisasi</b></td><td>Student Pass + kupon affiliate + mock gateway + resume 24 jam; Premium tutor (boost, ubah nama/WA, multi subjek).</td><td>Alur pembayaran &amp; gating premium</td></tr>
+    <tr><td><b>P3 — Pendaftaran Tutor</b></td><td>Form registrasi tutor (1 subjek + custom), form lokasi autocomplete 4 level + ketik manual, dashboard profil tutor.</td><td>Alur tutor selesai</td></tr>
+    <tr><td><b>P4 — Ops &amp; Admin</b></td><td>Admin 5 peran, booking &amp; review, notifikasi, ekspor, konfigurasi harga, kelola affiliate.</td><td>Alur admin &amp; affiliate selesai</td></tr>
+    <tr><td><b>P5 — Menuju Rilis</b></td><td>QA &amp; regression, konten landing/legal, deploy staging, uji load.</td><td>Build rilis</td></tr>
+    <tr><td><b>P6 — Launch</b></td><td>Rilis 17 Agustus 2026 + kampanye affiliate (AHMAD10, KOMUN15).</td><td>MVP live</td></tr>
+  </table>
+
+  <h3>12.2 Backlog Fase Lanjutan (Post-MVP)</h3>
+  <ul>
+    <li>Integrasi payment gateway sungguhan (Midtrans/Xendit) menggantikan mock.</li>
+    <li>Notifikasi email/WA sungguhan; chat realtime &amp; video call.</li>
+    <li>Aplikasi mobile native; sistem kehadiran les; multi-bahasa.</li>
+  </ul>
+</div>
+
+<!-- ============ 13. RISIKO ============ -->
+<div class="page">
+  <h2 class="sec" id="s13"><span class="num">13.</span> Risiko &amp; Mitigasi</h2>
+  <table>
+    <tr><th>Risiko</th><th>Dampak</th><th>Mitigasi</th></tr>
+    <tr><td>Mock gateway tidak menggambarkan gagal bayar/refund</td><td>Salah ekspektasi cashflow</td><td>Pindah ke gateway sungguhan di P2; uji flow gagal/sukses/expired dulu di mock.</td></tr>
+    <tr><td><code>npm run seed</code> berisiko menimpa data operasional</td><td>Kehilangan data akun/lokasi uji</td><td>Sediakan mekanisme backup db.json; jalankan seed hanya di lingkungan non-produksi.</td></tr>
+    <tr><td>Data tutor manual (city) tidak terstruktur</td><td>Kualitas filter menurun</td><td>Terapkan normalisasi teks lokasi (resolveCustomLocation) + backfill bertahap; lengkapi acceptance test BR-15.</td></tr>
+    <tr><td>Gating premium hanya di UI</td><td>Penyalahgunaan fitur</td><td>Enforcement sudah di sisi server (PATCH /tutors/me, registrasi).</td></tr>
+    <tr><td>Nomor WA tidak valid dari tutor</td><td>Ekspektasi siswa hilang</td><td>Validasi format saat daftar; fitur "lapor nomor tidak aktif" + notifikasi ops.</td></tr>
+    <tr><td>Satu server dev untuk rilis</td><td>Single point of failure</td><td>Deploy staging; ukur skala rilis awal kecil.</td></tr>
+  </table>
+
+  <div class="footer">NARAPRIVAT · Product Requirements Document v1.0 · 4 Agustus 2026 · Dokumen kebutuhan produk untuk pengembangan MVP.</div>
+</div>
+
+</body>
+</html>

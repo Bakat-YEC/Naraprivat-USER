@@ -1,0 +1,24 @@
+CARA HOSTING NARAPRIVAT DI GITHUB PAGES
+========================================
+
+File `.github/workflows/deploy-pages.yml` otomatis membangun versi
+standalone (1 file, dengan data demo) dan meng-upload-nya ke GitHub Pages
+setiap ada push ke branch main.
+
+LANGKAH:
+1. Buat repo BARU di github.com (nama bebas, misal "naraprivat").
+   WAJIB repo PUBLIC (GitHub Pages gratis hanya untuk repo publik).
+2. Di repo itu: Settings > Pages > Source = "GitHub Actions" (Save).
+3. Push source ke repo tersebut (branch main):
+     git remote add origin https://github.com/USERNAME/naraprivat.git
+     git branch -M main
+     git push -u origin main
+4. Tunggu Actions selesai (~2-4 menit). Cek tab "Actions".
+5. Buka: https://USERNAME.github.io/naraprivat/
+
+CATATAN:
+- Yang ter-deploy adalah data DEMO dari `node server/seed.js` (data asli
+  server/data/db.json TIDAK ikut di-repo karena memuat data pengguna asli).
+- Versi ini berjalan mode offline (data per browser/localStorage).
+- Jika ingin kembali berkontribusi: edit source, commit, push -> langsung
+  ter-deploy otomatis.
