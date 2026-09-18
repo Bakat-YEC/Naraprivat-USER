@@ -452,18 +452,23 @@ export default function Home() {
             </div>
 
             <div className="trust-row" ref={statsRef}>
-              <div className="avatar-stack">
-                {featured.slice(0, 5).map((t) => (
-                  <span key={t.id} className="avatar" style={{ backgroundColor: avatarColor(t.name) }}>
-                    {initials(t.name)}
-                  </span>
-                ))}
+              <div className="trust-row__left">
+                <div className="avatar-stack">
+                  {featured.slice(0, 5).map((t) => (
+                    <span key={t.id} className="avatar" style={{ backgroundColor: avatarColor(t.name) }}>
+                      {initials(t.name)}
+                    </span>
+                  ))}
+                </div>
+                <p>
+                  Dipercaya <b>murid &amp; orang tua</b>
+                  <br />
+                  di seluruh Indonesia
+                </p>
               </div>
-              <p>
-                Dipercaya <b>murid &amp; orang tua</b>
-                <br />
-                di seluruh Indonesia
-              </p>
+              <Link to="/register?role=tutor" className="btn btn--primary trust-cta">
+                Yuk Jadi Tutor →
+              </Link>
             </div>
           </div>
         </div>
