@@ -152,7 +152,7 @@ export default function Navbar() {
         <Link to="/register?role=tutor" onClick={close}><UserPlusIcon size={18} /> Daftar Jadi Tutor</Link>
         <Link to="/dashboard" onClick={close}><LayoutDashboardIcon size={18} /> Dashboard</Link>
         <Link to="/admin" onClick={close}><ShieldIcon size={18} /> Admin</Link>
-        <Link to="/affiliate" onClick={close}><LinkIcon size={18} /> Affiliate</Link>
+        <a href="https://naraprivate-affiliate-6868.ai.studio/" target="_blank" rel="noopener noreferrer" onClick={close}><LinkIcon size={18} /> Affiliate</a>
         {!user && <Link to="/login" onClick={close}><KeyIcon size={18} /> Masuk</Link>}
         {user && (
           <button className="btn btn--ghost" style={{ justifyContent: 'flex-start', paddingLeft: 14 }} onClick={handleLogout}>
