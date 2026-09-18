@@ -82,6 +82,9 @@ export default function Navbar() {
           <NavLink to="/dashboard" className={({ isActive }) => `navbar__link ${isActive ? 'active' : ''}`}>
             Dashboard
           </NavLink>
+          <a href="https://naraprivate-affiliate-6868.ai.studio/" target="_blank" rel="noopener noreferrer" className="navbar__link">
+            Program Affiliate
+          </a>
         </nav>
 
         <button className="navbar__search" onClick={() => navigate('/tutors')}>
