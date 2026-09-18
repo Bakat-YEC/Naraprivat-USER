@@ -467,7 +467,7 @@ export default function Home() {
                 </p>
               </div>
               <Link to="/register?role=tutor" className="btn btn--primary trust-cta">
-                Yuk Jadi Tutor →
+                Yuk Jadi Tutor! →
               </Link>
             </div>
           </div>
