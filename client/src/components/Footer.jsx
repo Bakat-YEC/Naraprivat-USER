@@ -25,7 +25,7 @@ export default function Footer() {
           </div>
           <div>
             <h4>Akun</h4>
-            <Link to="/login">Masuk Murid</Link>
+            <Link to="/login">Masuk Murid/Tutor</Link>
             <Link to="/register?role=tutor">Daftar Tutor</Link>
           </div>
           <div>
