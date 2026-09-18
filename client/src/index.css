@@ -98,7 +98,7 @@ input, select, textarea { font-family: inherit; }
 }
 .navbar--hidden { transform: translateY(-100%); }
 .navbar__inner { display: flex; align-items: center; gap: 20px; height: 72px; }
-.brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-size: 23px; font-weight: 800; color: var(--ink); }
+.brand { display: flex; align-items: center; gap: 10px; white-space: nowrap; font-family: var(--font-display); font-size: 23px; font-weight: 800; color: var(--ink); }
 .brand__logo {
   width: 42px; height: 42px; border-radius: 14px;
   background: linear-gradient(135deg, var(--primary-deep), var(--primary));
@@ -110,7 +110,7 @@ input, select, textarea { font-family: inherit; }
 .navbar__links { display: flex; gap: 4px; }
 .navbar__link {
   padding: 9px 16px; border-radius: 999px; color: var(--ink);
-  font-weight: 700; font-size: 15px; transition: 0.18s;
+  font-weight: 700; font-size: 15px; transition: 0.18s; white-space: nowrap;
 }
 .navbar__link:hover { background: var(--primary-soft); color: var(--primary-dark); }
 .navbar__link.active { background: var(--primary-light); color: var(--primary-deep); }
@@ -122,6 +122,7 @@ input, select, textarea { font-family: inherit; }
 }
 .navbar__search:hover { border-color: var(--primary); background: var(--primary-soft); color: var(--primary-dark); }
 .navbar__actions { display: flex; align-items: center; gap: 10px; }
+.navbar__actions .btn { white-space: nowrap; }
 .navbar__burger {
   display: none; width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--border-strong);
   background: #fff; font-size: 19px; align-items: center; justify-content: center; color: var(--ink);
@@ -148,31 +149,30 @@ input, select, textarea { font-family: inherit; }
 
 /* ---------- Navbar tablet (iPad / tab) ---------- */
 @media (min-width: 701px) and (max-width: 1040px) {
-  .navbar__inner { gap: 12px; height: 64px; }
-  .brand { font-size: 19px; gap: 8px; }
-  .brand__logo { width: 34px; height: 34px; font-size: 17px; border-radius: 10px; }
-  .navbar__links { gap: 2px; }
-  .navbar__link { padding: 7px 11px; font-size: 13.5px; }
-  .navbar__search { min-width: 42px; width: auto; padding: 8px 14px; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .navbar__actions { gap: 8px; }
-  .navbar__actions .btn { font-size: 13px; padding: 9px 14px; }
+  .navbar__inner { gap: 10px; height: 64px; }
+  .brand { font-size: 17px; gap: 8px; }
+  .brand__logo { width: 32px; height: 32px; font-size: 16px; border-radius: 10px; }
+  .navbar__links { gap: 0; }
+  .navbar__link { padding: 6px 9px; font-size: 12.5px; }
+  .navbar__actions { gap: 6px; }
+  .navbar__actions .btn { font-size: 12.5px; padding: 8px 12px; }
   .navbar__actions .btn--primary,
-  .navbar__actions .btn--secondary { padding: 8px 13px; }
+  .navbar__actions .btn--secondary { padding: 7px 11px; }
 }
 
 /* Tablet sempit: sembunyikan kolom pencarian, aksi tetap rata kanan */
-@media (min-width: 701px) and (max-width: 1000px) {
+@media (min-width: 701px) and (max-width: 1100px) {
   .navbar__search { display: none; }
   .navbar__actions { margin-left: auto; }
 }
 
 /* Layar sedang (Surface Pro ~1040–1280px): kompak, rata kanan */
 @media (min-width: 1041px) and (max-width: 1280px) {
-  .navbar__inner { gap: 14px; }
-  .brand { font-size: 20px; gap: 8px; }
-  .brand__logo { width: 36px; height: 36px; font-size: 18px; border-radius: 11px; }
-  .navbar__links { gap: 2px; }
-  .navbar__link { padding: 8px 13px; font-size: 14px; }
+  .navbar__inner { gap: 12px; }
+  .brand { font-size: 18px; gap: 8px; }
+  .brand__logo { width: 34px; height: 34px; font-size: 17px; border-radius: 11px; }
+  .navbar__links { gap: 0; }
+  .navbar__link { padding: 7px 11px; font-size: 13.5px; }
   .navbar__search { min-width: 150px; padding: 9px 16px; font-size: 13.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .navbar__actions { gap: 8px; }
   .navbar__actions .btn { font-size: 13.5px; padding: 9px 15px; }
