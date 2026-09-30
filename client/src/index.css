@@ -317,7 +317,7 @@ input, select, textarea { font-family: inherit; }
 
 /* ---------- Sections ---------- */
 .section { padding: 68px 0; }
-.section--top-tight { padding-top: 20px; }
+.section--top-tight { padding-top: 8px; }
 .section--top-tight .section__title { margin-top: 0; }
 .section--top-tight .section__head { margin-bottom: 20px; }
 @media (max-width: 700px) { .section--top-tight { padding-top: 0; } }
