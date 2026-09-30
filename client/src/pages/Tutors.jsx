@@ -246,7 +246,7 @@ export default function Tutors() {
     loading ? (
       <div className="spinner" />
     ) : data && data.items.length > 0 ? (
-      <div className={view === 'list' ? 'tutor-list' : 'grid grid--tutors'}>
+      <div className={isMobile || view !== 'list' ? 'grid grid--tutors' : 'tutor-list'}>
         {data.items.map((t) => (
           <TutorCard key={t.id} tutor={t} />
         ))}
@@ -353,26 +353,6 @@ export default function Tutors() {
             <div className="results-meta">
               <span>{loading ? 'Memuat…' : `${resultCount} hasil`}</span>
               <div className="results-meta__right">
-                <div className="view-toggle" role="group" aria-label="Tampilan hasil">
-                  <button
-                    type="button"
-                    className={view === 'grid' ? 'is-active' : ''}
-                    onClick={() => setViewMode('grid')}
-                    aria-label="Tampilan grid"
-                    aria-pressed={view === 'grid'}
-                  >
-                    <GridViewIcon size={15} /> <span>Grid</span>
-                  </button>
-                  <button
-                    type="button"
-                    className={view === 'list' ? 'is-active' : ''}
-                    onClick={() => setViewMode('list')}
-                    aria-label="Tampilan list"
-                    aria-pressed={view === 'list'}
-                  >
-                    <ListViewIcon size={15} /> <span>List</span>
-                  </button>
-                </div>
                 <button type="button" className="tutors-cs-btn" onClick={openSupport}>
                   <MessageCircleIcon size={15} /> Minta Tolong CS
                 </button>
