@@ -10,6 +10,8 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
   FilterIcon,
+  GridViewIcon,
+  ListViewIcon,
   MapPinIcon,
   MessageCircleIcon,
   SearchIcon,
@@ -49,7 +51,20 @@ export default function Tutors() {
   const [sortDraft, setSortDraft] = useState('recommended');
   const [filterDraft, setFilterDraft] = useState({ jenjang: '', minPrice: '', maxPrice: '', minRating: '', online: '', availability: '', gender: '', vehicle: '' });
   const [locDraft, setLocDraft] = useState({ provinsi: '', kabupaten: '', kecamatan: '' });
+  const [view, setView] = useState(() => {
+    const saved = typeof window !== 'undefined' ? window.localStorage.getItem('np_view') : null;
+    return saved === 'list' ? 'list' : 'grid';
+  });
   const lastScrollRef = useRef(0);
+
+  const setViewMode = (v) => {
+    setView(v);
+    try {
+      window.localStorage.setItem('np_view', v);
+    } catch {
+      /* storage penuh / diblokir: abaikan */
+    }
+  };
 
   const q = params.get('q') || '';
   const subject = params.get('subject') || '';
@@ -231,7 +246,7 @@ export default function Tutors() {
     loading ? (
       <div className="spinner" />
     ) : data && data.items.length > 0 ? (
-      <div className="grid grid--tutors">
+      <div className={view === 'list' ? 'tutor-list' : 'grid grid--tutors'}>
         {data.items.map((t) => (
           <TutorCard key={t.id} tutor={t} />
         ))}
@@ -337,9 +352,31 @@ export default function Tutors() {
 
             <div className="results-meta">
               <span>{loading ? 'Memuat…' : `${resultCount} hasil`}</span>
-              <button type="button" className="tutors-cs-btn" onClick={openSupport}>
-                <MessageCircleIcon size={15} /> Minta Tolong CS
-              </button>
+              <div className="results-meta__right">
+                <div className="view-toggle" role="group" aria-label="Tampilan hasil">
+                  <button
+                    type="button"
+                    className={view === 'grid' ? 'is-active' : ''}
+                    onClick={() => setViewMode('grid')}
+                    aria-label="Tampilan grid"
+                    aria-pressed={view === 'grid'}
+                  >
+                    <GridViewIcon size={15} /> <span>Grid</span>
+                  </button>
+                  <button
+                    type="button"
+                    className={view === 'list' ? 'is-active' : ''}
+                    onClick={() => setViewMode('list')}
+                    aria-label="Tampilan list"
+                    aria-pressed={view === 'list'}
+                  >
+                    <ListViewIcon size={15} /> <span>List</span>
+                  </button>
+                </div>
+                <button type="button" className="tutors-cs-btn" onClick={openSupport}>
+                  <MessageCircleIcon size={15} /> Minta Tolong CS
+                </button>
+              </div>
             </div>
 
             {resultsEl}
@@ -574,6 +611,26 @@ export default function Tutors() {
                       <option key={s.value} value={s.value}>{s.label}</option>
                     ))}
                   </select>
+                  <div className="view-toggle" role="group" aria-label="Tampilan hasil">
+                    <button
+                      type="button"
+                      className={view === 'grid' ? 'is-active' : ''}
+                      onClick={() => setViewMode('grid')}
+                      aria-label="Tampilan grid"
+                      aria-pressed={view === 'grid'}
+                    >
+                      <GridViewIcon size={15} />
+                    </button>
+                    <button
+                      type="button"
+                      className={view === 'list' ? 'is-active' : ''}
+                      onClick={() => setViewMode('list')}
+                      aria-label="Tampilan list"
+                      aria-pressed={view === 'list'}
+                    >
+                      <ListViewIcon size={15} />
+                    </button>
+                  </div>
                 </div>
                 <span className="text-sm text-muted">{resultCount} hasil</span>
               </div>
