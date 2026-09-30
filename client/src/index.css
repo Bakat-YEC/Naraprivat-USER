@@ -1573,7 +1573,7 @@ tbody tr:hover { background: #f6fbfa; }
   .hero { padding: 20px 0 40px; }
   .steps { grid-template-columns: 1fr; gap: 40px; }
   .steps::before { display: none; }
-  .stats-band { grid-template-columns: 1fr; gap: 18px; padding: 28px 20px; }
+.stats-band { display: none; }
   .stats-band__item + .stats-band__item { border-left: none; }
 .auth-card { padding: 30px 22px; }
   .search-hero--np { padding: 18px; gap: 16px; }
