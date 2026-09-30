@@ -299,7 +299,7 @@ export default function Register() {
                 onChange={(list) => setSubjects(list.slice(0, 1))}
                 max={1}
                 allowCreate
-                placeholder="Ketik mata pelajaran atau pilih…"
+                placeholder="Ketik bidang studi atau pilih…"
               />
               <div className="hint">
                 Bidang ajar lain bisa ditambahkan setelah akun Premium (Rp29.000/bln).

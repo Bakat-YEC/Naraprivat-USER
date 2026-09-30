@@ -313,13 +313,13 @@ export default function Home() {
 
             <form className="search-hero search-hero--np" onSubmit={handleSearch}>
               <div className="search-hero__field">
-                <span className="search-hero__label">Mata Pelajaran</span>
+                <span className="search-hero__label">Bidang Studi</span>
                 <div className="search-hero__control">
                   <span className="search-hero__icon"><BookOpenIcon size={15} /></span>
                   <SubjectAutocomplete
                     selected={subjectSel}
                     onChange={setSubjectSel}
-                    placeholder="Pilih / ketik mapel…"
+                    placeholder="Pilih / ketik bidang studi…"
                     max={1}
                   />
                   <span className="search-hero__caret">▾</span>
@@ -538,7 +538,7 @@ export default function Home() {
           </div>
           <div className="stats-band__item">
             <Counter target={niceCount(stats.subjects)} suffix="+" start={statsVisible} />
-            <span>Bidang Pelajaran</span>
+            <span>Bidang Studi</span>
           </div>
           <div className="stats-band__item">
             <Counter target={niceCount(stats.reviews)} suffix="+" start={statsVisible} />

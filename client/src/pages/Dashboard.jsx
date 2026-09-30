@@ -422,7 +422,7 @@ export default function Dashboard() {
                       <thead>
                         <tr>
                           <th>{user?.role === 'tutor' ? 'Murid' : 'Tutor'}</th>
-                          <th>Mata Pelajaran</th>
+                          <th>Bidang Studi</th>
                           <th>Jadwal</th>
                           <th>Metode</th>
                           <th>Harga</th>
@@ -943,7 +943,7 @@ function TutorProfileForm({ onSaved }) {
   const submit = async (e) => {
     e.preventDefault();
     if (!form.headline || !form.bio || form.subjects.length === 0 || form.jenjang.length === 0 || !form.city || !form.price) {
-      push('Lengkapi headline, bio, mata pelajaran, jenjang, kota, dan harga.', 'error');
+      push('Lengkapi headline, bio, bidang studi, jenjang, kota, dan harga.', 'error');
       return;
     }
     setSaving(true);
@@ -1065,7 +1065,7 @@ function TutorProfileForm({ onSaved }) {
       </div>
 
       <div className="field">
-        <label>Mata pelajaran yang diajarkan</label>
+        <label>Bidang studi yang diajarkan</label>
         <div className="hint" style={{ marginBottom: 8 }}>
           {premiumActive
             ? 'Akun Premium: boleh mengajar lebih dari satu bidang.'

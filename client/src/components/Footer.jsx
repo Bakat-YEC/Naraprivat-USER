@@ -13,7 +13,7 @@ export default function Footer() {
             </div>
             <p style={{ marginTop: 12, maxWidth: 320, fontSize: 14 }}>
               Marketplace tutor &amp; trainer terbesar di Indonesia. Temukan tutor privat terbaik
-              untuk mata pelajaran apa pun — online maupun tatap muka.
+              untuk bidang studi apa pun — online maupun tatap muka.
             </p>
           </div>
           <div>

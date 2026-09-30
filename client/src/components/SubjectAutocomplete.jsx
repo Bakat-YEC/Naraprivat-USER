@@ -5,7 +5,7 @@ import { BookOpenIcon, PlusIcon, XIcon } from './Icons';
 export default function SubjectAutocomplete({
   selected = [],
   onChange,
-  placeholder = 'Ketik mata pelajaran…',
+  placeholder = 'Ketik bidang studi…',
   allowCreate = false,
   max = 5
 }) {
