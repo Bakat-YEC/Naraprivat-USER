@@ -300,7 +300,7 @@ export default function Tutors() {
   const sheetTitle = sheet === 'sort' ? 'Urutkan' : sheet === 'filter' ? 'Filter' : 'Lokasi';
 
   return (
-    <section className="section" style={{ paddingTop: isMobile ? 0 : 40 }}>
+    <section className="section section--top-tight" style={{ paddingTop: isMobile ? 0 : undefined }}>
       {isMobile ? (
         <>
           {/* HEADER PENCARIAN MOBILE */}

@@ -317,6 +317,9 @@ input, select, textarea { font-family: inherit; }
 
 /* ---------- Sections ---------- */
 .section { padding: 68px 0; }
+.section--top-tight { padding-top: 20px; }
+.section--top-tight .section__title { margin-top: 0; }
+@media (max-width: 700px) { .section--top-tight { padding-top: 0; } }
 .section--warm { background: var(--bg-deep); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 .section--white { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 .section__head { margin-bottom: 40px; display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
