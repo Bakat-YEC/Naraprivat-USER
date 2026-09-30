@@ -16,6 +16,7 @@ import {
   MessageCircleIcon,
   SearchIcon,
   SortIcon,
+  RefreshIcon,
   UserPlusIcon,
   XIcon
 } from '../components/Icons';
@@ -475,8 +476,13 @@ export default function Tutors() {
 
           <div className="dash-grid">
             {/* FILTER SIDEBAR */}
-            <aside className="dash-side dash-side--scroll" style={{ width: 320, padding: '24px 20px' }}>
-              <h3 style={{ fontSize: 18, marginBottom: 24, letterSpacing: 0.3 }}>Filter</h3>
+            <aside className="dash-side dash-side--scroll" style={{ width: 320, padding: '20px' }}>
+              <div className="filter-head">
+                <h3 style={{ fontSize: 18, letterSpacing: 0.3 }}>Filter</h3>
+                <button className="btn btn--ghost btn--sm filter-head__reset" onClick={clearAll}>
+                  <RefreshIcon size={14} /> Reset
+                </button>
+              </div>
 
               <div className="field" style={{ marginBottom: 20 }}>
                 <label style={{ marginBottom: 6, fontWeight: 700, fontSize: 13 }}>Subjek</label>
@@ -564,12 +570,6 @@ export default function Tutors() {
                   onChange={(e) => update('availability', e.target.checked ? 'available' : '')}
                 />
                 <label htmlFor="avail" style={{ margin: 0, display: 'inline-flex', alignItems: 'center', gap: 8 }}><span className="status-dot-dot status-dot--green" /> Hanya yang tersedia</label>
-              </div>
-
-              <div className="filter-actions">
-                <button className="btn btn--primary btn--block" onClick={clearAll}>
-                  Reset Filter
-                </button>
               </div>
             </aside>
 
