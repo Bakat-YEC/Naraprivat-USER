@@ -562,7 +562,6 @@ export default function Home() {
                   to={`/tutors?subject=${encodeURIComponent(s.name)}`}
                   delay={i * 80}
                   className={`bento__tile bento__${s.size}`}
-                  style={{ background: s.tint }}
                 >
                   <div className="bento__count">
                     <b>{subjectCounts[s.name] || 0}</b> tutor tersedia
@@ -584,7 +583,6 @@ export default function Home() {
                   to={`/tutors?subject=${encodeURIComponent(s.name)}`}
                   delay={i * 60}
                   className="bento__tile bento__small"
-                  style={{ background: i % 2 ? 'var(--surface)' : 'var(--primary-soft)' }}
                 >
                   <span className="bento__emoji">
                     <IconC size={30} />

@@ -335,6 +335,7 @@ input, select, textarea { font-family: inherit; }
   position: relative; border-radius: 22px; padding: 20px; overflow: hidden;
   display: flex; flex-direction: column; justify-content: space-between;
   text-decoration: none; color: var(--ink);
+  background: #fff; border: 1px solid var(--border);
   transition: 0.25s; box-shadow: var(--shadow-sm);
 }
 .bento__tile:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
