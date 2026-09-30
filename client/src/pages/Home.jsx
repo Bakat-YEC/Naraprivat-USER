@@ -454,9 +454,7 @@ export default function Home() {
             <div className="trust-row" ref={statsRef}>
               <div className="trust-row__left">
                 <p>
-                  Dipercaya <b>murid &amp; orang tua</b>
-                  <br />
-                  di seluruh Indonesia
+                  Dipercaya <b>murid &amp; orang tua</b> di seluruh Indonesia
                 </p>
               </div>
               <Link to="/register?role=tutor" className="btn btn--primary trust-cta">
