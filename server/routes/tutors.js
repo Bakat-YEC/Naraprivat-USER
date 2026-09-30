@@ -63,6 +63,31 @@ function aliasLocation(name) {
   return String(name).toLowerCase().replace(/^(kabupaten|kota)\s+/, '').trim();
 }
 
+// Pencarian teks bebas: nama, headline, bio, bidang studi, jenjang,
+// lokasi (provinsi/kabupaten/kecamatan via hierarki), dan kode tutor.
+function tutorSearchFields(u, db) {
+  const loc = locationInfo(db, u.locationId);
+  return [
+    u.name,
+    u.headline,
+    u.bio,
+    u.tutorCode,
+    u.city,
+    ...(u.subjects || []),
+    ...(u.jenjang || []),
+    ...loc.map((l) => l.name)
+  ]
+    .filter(Boolean)
+    .map((f) => String(f).toLowerCase());
+}
+
+function matchesTutorQuery(u, db, rawQuery) {
+  const tokens = String(rawQuery || '').trim().toLowerCase().split(/\s+/).filter(Boolean);
+  if (!tokens.length) return true;
+  const fields = tutorSearchFields(u, db);
+  return tokens.every((t) => fields.some((f) => f.includes(t)));
+}
+
 function resolveCustomLocation(db, text) {
   const lower = String(text || '').toLowerCase();
   if (!lower) return null;
@@ -215,13 +240,9 @@ router.get('/', (req, res) => {
 
   let tutors = db.users.filter(isTutorActive);
 
-  const query = String(q).trim().toLowerCase();
+  const query = String(q).trim();
   if (query) {
-    tutors = tutors.filter((u) =>
-      [u.name, u.headline, u.bio, ...(u.subjects || []), u.city]
-        .filter(Boolean)
-        .some((field) => String(field).toLowerCase().includes(query))
-    );
+    tutors = tutors.filter((u) => matchesTutorQuery(u, db, query));
   }
   if (subject) {
     tutors = tutors.filter((u) =>

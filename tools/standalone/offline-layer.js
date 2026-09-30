@@ -228,6 +228,23 @@ var db = loadDb();
   function aliasLocation(name) {
     return String(name).toLowerCase().replace(/^(kabupaten|kota)\s+/, '').trim();
   }
+  function tutorSearchFields(u) {
+    var loc = locationInfo(u.locationId);
+    return [u.name, u.headline, u.bio, u.tutorCode, u.city]
+      .concat(u.subjects || [])
+      .concat(u.jenjang || [])
+      .concat(loc.map(function (l) { return l.name; }))
+      .filter(Boolean)
+      .map(function (f) { return String(f).toLowerCase(); });
+  }
+  function matchesTutorQuery(u, rawQuery) {
+    var tokens = String(rawQuery || '').trim().toLowerCase().split(/\s+/).filter(Boolean);
+    if (!tokens.length) return true;
+    var fields = tutorSearchFields(u);
+    return tokens.every(function (t) {
+      return fields.some(function (f) { return f.indexOf(t) !== -1; });
+    });
+  }
   function resolveCustomLocation(text) {
     var lower = String(text || '').toLowerCase();
     if (!lower) return null;
@@ -1162,14 +1179,10 @@ var existing = db.users.find(function (u) { return u.email === cleanEmail && u.r
         return { items: ctItems, total: ctItems.length };
       }
       if (segs.length === 1 && method === 'GET') {
-        var logQuery = String(q.q || '').trim().toLowerCase();
+        var logQuery = String(q.q || '').trim();
         var list = db.users.filter(isTutorActive);
         if (logQuery) {
-          list = list.filter(function (u) {
-            return [u.name, u.headline, u.bio].concat(u.subjects || []).concat([u.city])
-              .filter(Boolean)
-              .some(function (field) { return String(field).toLowerCase().indexOf(logQuery) !== -1; });
-          });
+          list = list.filter(function (u) { return matchesTutorQuery(u, logQuery); });
         }
         if (q.subject) {
           list = list.filter(function (u) {

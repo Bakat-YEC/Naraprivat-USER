@@ -161,6 +161,15 @@ export default function Tutors() {
     setParams(next);
   };
 
+  // input pencarian: nilai lokal + debounce supaya tidak fetch tiap ketikan
+  const [qInput, setQInput] = useState(q);
+  useEffect(() => { setQInput(q); }, [q]);
+  useEffect(() => {
+    if (qInput === q) return undefined;
+    const t = setTimeout(() => update('q', qInput), 350);
+    return () => clearTimeout(t);
+  }, [qInput]);
+
   const applySubject = (list) => {
     setSubjectSel(list);
     update('subject', list[0] || '');
@@ -569,9 +578,10 @@ export default function Tutors() {
               <div className="tutor-searchbox">
                 <input
                   type="search"
-                  placeholder="Cari nama tutor, subjek, atau kata kunci…"
-                  value={q}
-                  onChange={(e) => update('q', e.target.value)}
+                  placeholder="Cari nama tutor, bidang studi, jenjang, atau lokasi (provinsi/kota)…"
+                  aria-label="Cari tutor"
+                  value={qInput}
+                  onChange={(e) => setQInput(e.target.value)}
                 />
                 {q && (
                   <button className="btn btn--ghost btn--sm" onClick={() => update('q', '')} aria-label="Hapus pencarian">
