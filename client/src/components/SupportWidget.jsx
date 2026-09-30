@@ -90,7 +90,6 @@ export default function SupportWidget() {
       {!open && !footerVisible && (
         <button className="support-fab" aria-label="Hubungi CS" onClick={() => setOpen(true)}>
           <MessageCircleIcon size={22} />
-          <span className="support-fab__label">Bantuan / CS</span>
         </button>
       )}
 
