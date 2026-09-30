@@ -646,6 +646,17 @@ a.tag:hover, button.tag:hover { border-color: var(--primary); color: var(--prima
 /* ---------- Dashboard ---------- */
 .dash-grid { display: grid; grid-template-columns: 300px 1fr; gap: 28px; align-items: start; }
 .dash-side { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px 22px; box-shadow: var(--shadow-sm); position: sticky; top: 92px; }
+.dash-side--scroll {
+  max-height: calc(100vh - 116px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+.dash-side--scroll::-webkit-scrollbar { width: 8px; }
+.dash-side--scroll::-webkit-scrollbar-track { background: transparent; }
+.dash-side--scroll::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 999px; }
+.dash-side--scroll::-webkit-scrollbar-thumb:hover { background: var(--muted); }
 .dash-side a {
   display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 12px;
   color: var(--muted); font-weight: 700; font-size: 14px; margin-bottom: 4px; cursor: pointer; transition: 0.15s;

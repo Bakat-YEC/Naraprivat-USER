@@ -486,7 +486,7 @@ export default function Tutors() {
 
           <div className="dash-grid">
             {/* FILTER SIDEBAR */}
-            <aside className="dash-side" style={{ width: 320, padding: '24px 20px' }}>
+            <aside className="dash-side dash-side--scroll" style={{ width: 320, padding: '24px 20px' }}>
               <h3 style={{ fontSize: 18, marginBottom: 24, letterSpacing: 0.3 }}>Filter</h3>
 
               <div className="field" style={{ marginBottom: 20 }}>
