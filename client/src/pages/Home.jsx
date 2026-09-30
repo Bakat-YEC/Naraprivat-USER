@@ -453,13 +453,6 @@ export default function Home() {
 
             <div className="trust-row" ref={statsRef}>
               <div className="trust-row__left">
-                <div className="avatar-stack">
-                  {featured.slice(0, 5).map((t) => (
-                    <span key={t.id} className="avatar" style={{ backgroundColor: avatarColor(t.name) }}>
-                      {initials(t.name)}
-                    </span>
-                  ))}
-                </div>
                 <p>
                   Dipercaya <b>murid &amp; orang tua</b>
                   <br />
