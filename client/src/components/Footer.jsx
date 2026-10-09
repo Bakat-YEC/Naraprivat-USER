@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="container">
         <div className="footer__grid">
           <div>
-            <div className="brand" style={{ color: '#fff' }}>
+            <div className="brand" style={{ color: 'var(--bg)' }}>
               <span className="brand__logo">N</span>
               Naraprivat
             </div>

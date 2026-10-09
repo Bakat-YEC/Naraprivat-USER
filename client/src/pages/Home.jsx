@@ -19,7 +19,6 @@ import {
   GlobeIcon,
   GraduationCapIcon,
   LeafIcon,
-  LightbulbIcon,
   MapPinIcon,
   MessageCircleIcon,
   MonitorIcon,
@@ -29,9 +28,9 @@ import {
 } from '../components/Icons';
 
 const FEATURED_SUBJECTS = [
-  { name: 'Matematika', icon: CalculatorIcon, size: 'large', tint: 'linear-gradient(135deg, #ffe8d6, #fff3e8)' },
-  { name: 'Bahasa Inggris', icon: GlobeIcon, size: 'wide', tint: 'linear-gradient(135deg, #d8f6ef, #eefaf6)' },
-  { name: 'Programming', icon: CodeIcon, size: 'wide', tint: 'linear-gradient(135deg, #e3ebff, #f0f4ff)' }
+  { name: 'Matematika', icon: CalculatorIcon, size: 'large' },
+  { name: 'Bahasa Inggris', icon: GlobeIcon, size: 'wide' },
+  { name: 'Programming', icon: CodeIcon, size: 'wide' }
 ];
 
 const SMALL_SUBJECTS = [
@@ -307,6 +306,7 @@ export default function Home() {
       <section className="hero">
         <div className="container">
           <div className="hero__content">
+            <div className="hero__kicker">Tutor privat · Online & Tatap Muka</div>
             <h1>
               Temukan tutor privat <em>terdekat</em>, langsung chat via WhatsApp
             </h1>
@@ -643,29 +643,28 @@ export default function Home() {
       {/* ======= HOW IT WORKS ======= */}
       <section className="section">
         <div className="container">
-          <Reveal>
-            <div className="section__head section__head--center">
-              <div>
+          <div className="editorial-split">
+            <Reveal>
+              <div className="editorial-split__lead">
+                <div className="section__tag">Cara Kerja</div>
                 <h2 className="section__title">Terhubung ke tutor cuma 3 langkah</h2>
                 <p className="section__sub">Tanpa booking, tanpa aplikasi chat tambahan — langsung WhatsApp.</p>
               </div>
-            </div>
-          </Reveal>
+            </Reveal>
 
-          <div className="steps">
-            {STEPS.map((s, i) => {
-              const IconC = s.icon;
-              return (
-                <Reveal key={s.num} delay={i * 120}>
-                  <div className="step">
-                    <div className="step__num">{s.num}</div>
-                    <div className="step__icon"><IconC size={30} /></div>
-                    <h3>{s.title}</h3>
-                    <p>{s.desc}</p>
+            <div className="editorial-steps">
+              {STEPS.map((s, i) => (
+                <Reveal key={s.num} delay={i * 100}>
+                  <div className="editorial-step">
+                    <span className="editorial-step__num">{s.num}</span>
+                    <div>
+                      <h3>{s.title}</h3>
+                      <p>{s.desc}</p>
+                    </div>
                   </div>
                 </Reveal>
-              );
-            })}
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -674,7 +673,7 @@ export default function Home() {
       <section className="section section--warm">
         <div className="container">
           <Reveal>
-            <div className="section__head section__head--center">
+            <div className="section__head">
               <div>
                 <div className="section__tag">Kata Mereka</div>
                 <h2 className="section__title">Cerita asli dari pengguna</h2>
@@ -684,22 +683,21 @@ export default function Home() {
               </div>
             </div>
           </Reveal>
-          <div className="grid grid--3">
-            {TESTIMONIALS.map((t, i) => (
-              <Reveal key={t.name} delay={i * 120}>
-                <div className="testimonial">
-                  <div className="stars">★★★★★</div>
-                  <p className="testimonial__quote">“{t.text}”</p>
-                  <div className="testimonial__person">
+          <div className="quote-list">
+            {TESTIMONIALS.map((t) => (
+              <Reveal key={t.name}>
+                <figure className="quote">
+                  <blockquote className="quote__text">“{t.text}”</blockquote>
+                  <figcaption className="quote__by">
                     <span className="avatar" style={{ background: avatarColor(t.name), fontSize: 13 }}>
                       {initials(t.name)}
                     </span>
-                    <div>
-                      <b style={{ fontSize: 14 }}>{t.name}</b>
-                      <div className="text-sm text-muted">{t.role}</div>
-                    </div>
-                  </div>
-                </div>
+                    <span>
+                      <b>{t.name}</b>
+                      <small>{t.role}</small>
+                    </span>
+                  </figcaption>
+                </figure>
               </Reveal>
             ))}
           </div>
@@ -716,26 +714,29 @@ export default function Home() {
                 flexDirection: 'row',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                padding: '38px 42px',
-                background: 'linear-gradient(135deg, var(--primary-deep), var(--primary-dark) 55%, #26c4b0)',
+                padding: '48px 44px',
+                background: 'var(--ink)',
                 border: 'none',
-                color: '#fff',
+                borderRadius: 8,
+                color: 'var(--bg)',
                 flexWrap: 'wrap',
-                gap: 20,
-                overflow: 'hidden'
+                gap: 24
               }}
             >
-              <span style={{ position: 'absolute', right: 30, top: 6, opacity: 0.12 }}>
-                <LightbulbIcon size={72} />
-              </span>
-              <div style={{ position: 'relative', zIndex: 1 }}>
-                <h2 style={{ color: '#fff', marginBottom: 8 }}>Punya keahlian untuk dibagikan?</h2>
-                <p style={{ color: 'rgba(255,255,255,0.94)' }}>
-                  Daftar sebagai tutor — <b>gratis, 100% bebas komisi</b>. Kamu yang tentukan jadwal dan tarifmu sendiri.
+              <div style={{ position: 'relative', zIndex: 1, maxWidth: 620 }}>
+                <h2 style={{ color: 'var(--bg)', marginBottom: 10, fontSize: 'clamp(26px, 3.2vw, 38px)' }}>
+                  Punya keahlian untuk dibagikan?
+                </h2>
+                <p style={{ color: 'rgba(246,242,232,0.78)' }}>
+                  Daftar sebagai tutor — <b style={{ color: 'var(--bg)' }}>gratis, 100% bebas komisi</b>. Kamu yang tentukan jadwal dan tarifmu sendiri.
                 </p>
               </div>
               <div className="flex gap-12" style={{ position: 'relative', zIndex: 1 }}>
-                <Link to="/register?role=tutor" className="btn btn--lg" style={{ background: '#fff', color: 'var(--primary-deep)' }}>
+                <Link
+                  to="/register?role=tutor"
+                  className="btn btn--lg"
+                  style={{ background: 'var(--bg)', color: 'var(--ink)' }}
+                >
                   Daftar Jadi Tutor
                 </Link>
               </div>
