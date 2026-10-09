@@ -139,7 +139,7 @@ var db = loadDb();
     var letter = String(name || '?').trim().charAt(0).toUpperCase() || '?';
     var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96">' +
       '<rect width="96" height="96" rx="48" fill="#e9eef2"/>' +
-      '<text x="48" y="60" font-family="Nunito,Arial,sans-serif" font-size="40" font-weight="700" fill="#475569" text-anchor="middle">' +
+      '<text x="48" y="60" font-family="SF Pro Display,Arial,sans-serif" font-size="40" font-weight="700" fill="#475569" text-anchor="middle">' +
       letter + '</text></svg>';
     try {
       return 'data:image/svg+xml;base64,' +
