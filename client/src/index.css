@@ -856,7 +856,7 @@ tbody tr:hover { background: #f6fbfa; }
 .tutors-cs-btn:hover { background: var(--primary); color: #fff; }
 
 /* ---------- Footer ---------- */
-.footer { background: var(--ink); color: rgba(246, 242, 232, 0.72); padding: 72px 0 32px; margin-top: 24px; border-top: 1px solid var(--ink); }
+.footer { background: var(--ink); color: rgba(246, 242, 232, 0.72); padding: 72px 0 32px; margin-top: 64px; border-top: 1px solid var(--ink); }
 .footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
 .footer h4 { color: var(--bg); margin-bottom: 16px; font-size: 15px; font-family: var(--font-display); font-weight: 700; letter-spacing: 0; }
 .footer a { color: rgba(246, 242, 232, 0.72); display: block; margin-bottom: 9px; font-size: 14px; font-weight: 500; transition: 0.15s; }
