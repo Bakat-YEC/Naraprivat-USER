@@ -6,7 +6,6 @@ import Reveal from '../components/Reveal';
 import SubjectAutocomplete from '../components/SubjectAutocomplete';
 import LocationSearchInput from '../components/LocationSearchInput';
 import { JENJANG } from '../options';
-import useCountUp from '../hooks/useCountUp';
 import {
   BookOpenIcon,
   BuildingIcon,
@@ -76,23 +75,6 @@ const TESTIMONIALS = [
   }
 ];
 
-function Counter({ target, suffix = '', start }) {
-  const value = useCountUp(target, { start });
-  return (
-    <b>
-      {value.toLocaleString('id-ID')}
-      {suffix}
-    </b>
-  );
-}
-
-// Minimum tampil 100+ (marketing), lalu round-down per ratusan: 192 → 190, 2013 → 2000
-const niceCount = (n) => {
-  const x = Number(n);
-  if (!Number.isFinite(x)) return 100;
-  return Math.max(100, Math.floor(x / 100) * 100);
-};
-
 // Ambil bagian terakhir lokasi dari log (pisah ">" -> kecamatan), abaikan kode angka
 const locLabel = (l) => {
   const parts = (l.locationName || '').split('>').map((s) => s.trim()).filter(Boolean);
@@ -115,7 +97,6 @@ export default function Home() {
   const [subjects, setSubjects] = useState([]);
   const [featured, setFeatured] = useState([]);
   const [allTutors, setAllTutors] = useState([]);
-  const [stats, setStats] = useState({ tutors: 0, subjects: 0, reviews: 0 });
   const [subjectSel, setSubjectSel] = useState([]);
   const [loc, setLoc] = useState({ provinsi: '', kabupaten: '', kecamatan: '', desa: '' });
   const [jenjang, setJenjang] = useState('');
@@ -154,8 +135,6 @@ export default function Home() {
   const [feedTotal, setFeedTotal] = useState(0);
   const [liveLogs, setLiveLogs] = useState([]);
   const [liveIdx, setLiveIdx] = useState(0);
-  const statsRef = useRef(null);
-  const [statsVisible, setStatsVisible] = useState(false);
   const trackRef = useRef(null);
   const navigate = useNavigate();
 
@@ -165,41 +144,17 @@ export default function Home() {
       setFeatured(data.items);
     }).catch(() => {});
 
-    // Stats sinkron dengan jumlah tutor yang aktif (di-refresh tiap 10 detik)
+    // Sinkron daftar tutor aktif (untuk hitungan kategori, di-refresh tiap 10 detik)
     const syncStats = () => {
       api.get('/tutors?perPage=100')
         .then((data) => {
           setAllTutors(data.items);
-          const fieldSet = new Set();
-          data.items.forEach((t) =>
-            (t.subjects || []).forEach((s) => fieldSet.add(s))
-          );
-          const reviews = data.items.reduce((sum, t) => sum + t.reviewCount, 0);
-          setStats({ tutors: data.total, subjects: fieldSet.size, reviews });
         })
         .catch(() => {});
     };
     syncStats();
     const id = setInterval(syncStats, 10000);
     return () => clearInterval(id);
-  }, []);
-
-  useEffect(() => {
-    const el = statsRef.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setStatsVisible(true);
-            obs.disconnect();
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
   }, []);
 
   // Live Search Feed — polling tutor yang cocok dengan kriteria (5 detik)
@@ -451,7 +406,7 @@ export default function Home() {
               )}
             </div>
 
-            <div className="trust-row" ref={statsRef}>
+            <div className="trust-row">
               <div className="trust-row__left">
                 <p>
                   Dipercaya <b>murid &amp; orang tua</b> di seluruh Indonesia
@@ -519,24 +474,6 @@ export default function Home() {
           </div>
         </div>
       )}
-
-      {/* ======= STATS BAND ======= */}
-      <div className="container">
-        <div className={criteriaActive ? 'stats-band stats-band--below' : 'stats-band'}>
-          <div className="stats-band__item">
-            <Counter target={niceCount(stats.tutors)} suffix="+" start={statsVisible} />
-            <span>Tutor Terdaftar</span>
-          </div>
-          <div className="stats-band__item">
-            <Counter target={niceCount(stats.subjects)} suffix="+" start={statsVisible} />
-            <span>Bidang Studi</span>
-          </div>
-          <div className="stats-band__item">
-            <Counter target={niceCount(stats.reviews)} suffix="+" start={statsVisible} />
-            <span>Ulasan Murid</span>
-          </div>
-        </div>
-      </div>
 
       {/* ======= BENTO KATEGORI ======= */}
       <section className="section">
