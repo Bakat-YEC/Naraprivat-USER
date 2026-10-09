@@ -699,7 +699,7 @@ export default function Dashboard() {
                                 background: 'none',
                                 fontSize: 30,
                                 cursor: 'pointer',
-                                color: n <= revRating ? '#f5a623' : 'var(--border-strong)',
+                                color: n <= revRating ? 'var(--accent)' : 'var(--border-strong)',
                                 padding: 0,
                                 marginRight: 2
                               }}
