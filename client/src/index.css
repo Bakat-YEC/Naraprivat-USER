@@ -240,7 +240,7 @@ input, select, textarea { font-family: inherit; }
 .hero {
   position: relative;
   text-align: left;
-  padding: 76px 0 72px;
+  padding: 36px 0 72px;
   border-bottom: 1px solid var(--border-strong);
 }
 .hero__content { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; }
