@@ -259,7 +259,20 @@ const affiliateSeeds = [
 const adminSeeds = [
   { name: 'Admin System', email: 'admin.system@naraprivat.id', role: 'system' },
   { name: 'Admin Operasional', email: 'admin.ops@naraprivat.id', role: 'operasional' },
-  { name: 'Admin CS', email: 'admin.cs@naraprivat.id', role: 'cs' },
+  {
+    name: 'Admin CS',
+    email: 'admin.cs@naraprivat.id',
+    role: 'cs',
+    whatsapp: '6281234567001',
+    csGreeting: 'Halo! Saya Admin CS, siap bantu Anda.'
+  },
+  {
+    name: 'Admin CS Nisa',
+    email: 'admin.cs2@naraprivat.id',
+    role: 'cs',
+    whatsapp: '6281234567002',
+    csGreeting: 'Halo! Saya Nisa dari CS NARAPRIVAT. Ada yang bisa dibantu?'
+  },
   { name: 'Admin Keuangan', email: 'admin.keuangan@naraprivat.id', role: 'keuangan' },
   { name: 'Admin Analytics', email: 'admin.analytics@naraprivat.id', role: 'analytics' }
 ];
@@ -539,6 +552,8 @@ function buildSeed() {
     email: a.email,
     passwordHash: hash,
     role: a.role,
+    whatsapp: a.whatsapp || null,
+    csGreeting: a.csGreeting || null,
     createdAt: new Date(now - 30 * 86400000).toISOString()
   }));
 
