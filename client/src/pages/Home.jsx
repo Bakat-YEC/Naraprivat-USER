@@ -301,7 +301,7 @@ export default function Home() {
   };
 
   return (
-    <>
+    <div className="home">
       {/* ======= HERO ======= */}
       <section className="hero">
         <div className="container">
@@ -711,15 +711,15 @@ export default function Home() {
             <div
               className="tutor-card"
               style={{
-                flexDirection: 'row',
+                flexDirection: 'column',
                 alignItems: 'center',
-                justifyContent: 'space-between',
+                justifyContent: 'center',
+                textAlign: 'center',
                 padding: '48px 44px',
                 background: 'var(--ink)',
                 border: 'none',
                 borderRadius: 8,
                 color: 'var(--bg)',
-                flexWrap: 'wrap',
                 gap: 24
               }}
             >
@@ -744,6 +744,6 @@ export default function Home() {
           </Reveal>
         </div>
       </section>
-    </>
+    </div>
   );
 }

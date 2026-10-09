@@ -337,6 +337,31 @@ input, select, textarea { font-family: inherit; }
 .section__sub { color: var(--muted); margin-top: 14px; max-width: 560px; font-size: 16px; }
 .section__head--center .section__sub { margin-left: auto; margin-right: auto; }
 
+/* ---------- Home centered layout ---------- */
+.home { text-align: center; }
+.home .hero { text-align: center; }
+.home .hero__kicker { justify-content: center; }
+.home .hero__kicker::before { display: none; }
+.home .hero h1 { max-width: 20ch; margin-left: auto; margin-right: auto; }
+.home .search-hero { margin-left: auto; margin-right: auto; text-align: left; }
+.home .live-search-ticker { margin-left: auto; margin-right: auto; }
+.home .trust-row { justify-content: center; text-align: center; }
+.home .trust-row__left { justify-content: center; }
+.home .trust-row p { text-align: center; }
+.home .section__head { flex-direction: column; align-items: center; text-align: center; }
+.home .section__tag { justify-content: center; }
+.home .section__tag::before { display: none; }
+.home .section__sub { margin-left: auto; margin-right: auto; }
+.home .bento__tile { align-items: center; text-align: center; }
+.home .editorial-split { grid-template-columns: 1fr; gap: 44px; text-align: center; }
+.home .editorial-split__lead { position: static; }
+.home .editorial-step { flex-direction: column; align-items: center; text-align: center; gap: 10px; }
+.home .editorial-step__num { min-width: 0; }
+.home .editorial-step p { margin-left: auto; margin-right: auto; }
+.home .quote { grid-template-columns: 1fr; gap: 20px; justify-items: center; text-align: center; }
+.home .quote__text { margin-left: auto; margin-right: auto; }
+.home .quote__by { justify-content: center; text-align: left; }
+
 /* ---------- Bento categories ---------- */
 .bento { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 122px; gap: 12px; }
 .bento__tile {
