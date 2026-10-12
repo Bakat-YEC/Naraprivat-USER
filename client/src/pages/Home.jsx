@@ -263,7 +263,8 @@ export default function Home() {
           <div className="hero__content">
             <div className="hero__kicker">Tutor privat · Online & Tatap Muka</div>
             <h1>
-              Temukan tutor privat <em>terdekat</em>, langsung chat via WhatsApp
+              Temukan tutor privat <em>terdekat</em>,<br />
+              langsung chat via WhatsApp
             </h1>
 
             <form className="search-hero search-hero--np" onSubmit={handleSearch}>
