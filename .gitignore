@@ -10,3 +10,5 @@ tanya.py
 *.log
 .env
 .DS_Store
+WhatsApp Image*.jpeg
+WhatsApp Image*.jpg
